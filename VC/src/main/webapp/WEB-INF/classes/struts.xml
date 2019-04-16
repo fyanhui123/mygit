@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 是否为struts开发模式 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 默认的UI template主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 默认的国际化地区信息 -->
+	<constant name="struts.locale" value="zh_CN" />
+	<!-- 国际化信息内码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- action的后缀 -->
+	<constant name="struts.action.extension" value="do,service" />
+	<!-- 加载附加的国际化属性文件（不包含.properties后缀）。可以增加多个properties文件的名称，使用逗号或者空格分割 -->
+	<constant name="struts.custom.i18n.resources" value="i18n/messages,i18n/messagesPUB,i18n/messagesOrder,i18n/messagesBaseinfo,i18n/messagesInquiry,i18n/messagesStore,i18n/messagesVisaUsage,i18n/messagesInvoice" />
+
+	<!-- ObjectFactory接口 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!--
+		指定当使用SpringObjectFactory时的自动装配逻辑.合法值包括: name, type, auto, 和
+		constructor (缺省为 name )
+	-->
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+
+	<!-- 允许动态方法调用  -->
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+
+	<!-- 是否国际化信息自动加载 -->
+	<constant name="struts.i18n.reload" value="false" />
+	<!-- 是否自动加载xml配置(true,false) -->
+	<constant name="struts.configuration.xml.reload" value="false" />
+
+	<!-- 是否spring应该使用自身的cache -->
+	<constant name="struts.objectFactory.spring.useClassCache"
+		value="true" />
+	<constant name="struts.freemarker.templatesCache" value="false" />
+	<!-- 是否struts过滤器中提供的静态内容应该被浏览器缓存在头部属性中 -->
+	<constant name="struts.serve.static.browserCache" value="true" />
+	<!-- 是否struts过滤器应该提供静态内容 -->
+	<constant name="struts.serve.static" value="true" />
+	<!-- 是否不缓存XSLT模版 -->
+	<constant name="struts.xslt.nocache" value="false" />
+	<constant name="struts.multipart.saveDir" value="tmp" />
+	 <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->    
+	 <constant name="struts.multipart.maxSize" value="10701096"/>
+
+	<!-- 通用模块struts配置文件 -->
+	<include file="struts/struts-common.xml" />
+	<include file="struts/struts-index.xml" />
+	<!-- subfunc子模块struts配置文件 -->
+	<include file="struts/struts-subfunc.xml" />
+	<!-- 征订管理模块配置文件 -->
+	<include file="struts/struts-order.xml" />
+	<!-- baseinfo子模块struts配置文件 -->
+	<include file="struts/struts-baseinfo.xml" />
+	<!-- 查询统计模块struts配置文件 -->
+	<include file="struts/struts-inquiry.xml" />
+	<!-- 库存管理模块struts配置文件 -->
+	<include file="struts/struts-store.xml" />
+	<!-- 单证使用模块struts配置文件 -->
+	<include file="struts/struts-visaUsage.xml" />
+	<!-- 发票struts配置文件 -->
+	<include file="struts/struts-invoice.xml" />
+	<!-- pub相关表struts配置文件 -->
+	<include file="struts/struts-pub.xml" />	
+	<!-- 激活卡相关struts配置文件 -->
+	<include file="struts/struts-insucard.xml" />
+	<!-- 外围银保通对账struts配置文件 -->
+	<include file="struts/struts-account.xml" />
+	<!-- 外围银保通对账struts配置文件 -->
+	<include file="struts/struts-role.xml" />
+	<!--历史轨迹表查询 -->
+	<include file="struts/struts-takio.xml" />
+	<!--菜单管理struts配置文件 -->
+	<include file="struts/struts-menu.xml" />
+	<!--对外提供服务 -->
+	<include file="struts/struts-oauth.xml" />
+</struts>

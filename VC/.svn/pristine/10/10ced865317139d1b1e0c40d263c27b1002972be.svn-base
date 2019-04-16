@@ -1,0 +1,40 @@
+<ehcache>
+	<diskStore path="java.io.tmpdir" />
+	
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true"
+		diskSpoolBufferSizeMB="100" maxElementsOnDisk="10000000"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU" />
+	
+	<cache name="defaultCache_" maxElementsInMemory="100000" eternal="true"
+		timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true"
+		diskSpoolBufferSizeMB="1000" maxElementsOnDisk="10000000"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="1200"
+		memoryStoreEvictionPolicy="LRU">
+	</cache>
+
+	<!--
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,socketTimeoutMillis=3000,rmiUrls=//10.100.101.65:40001/ehcacheTest" />
+	 -->
+
+	<!--
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=10.100.101.61,port=40001,socketTimeoutMillis=3000" />
+	 -->
+
+	<!-- 
+	<cache name="defaultCache_" maxElementsInMemory="100000" eternal="true"
+		timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true"
+		diskSpoolBufferSizeMB="1000" maxElementsOnDisk="10000000"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="1200"
+		memoryStoreEvictionPolicy="LRU">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
+	</cache>
+	 -->
+
+</ehcache>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+	<bean id="orderLaunchAction"
+		class="com.tapi.tcs.vc.order.web.OrderLaunchAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="orderApproveAction"
+		class="com.tapi.tcs.vc.order.web.OrderApproveAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="orderGatherAction"
+		class="com.tapi.tcs.vc.order.web.OrderGatherAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="purchaseGenerateAction"
+		class="com.tapi.tcs.vc.order.web.PurchaseGenerateAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="purchaseOrderAction"
+		class="com.tapi.tcs.vc.order.web.PurchaseOrderAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="purchaseRecieptAction"
+		class="com.tapi.tcs.vc.order.web.PurchaseRecieptAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+	<bean id="purchaseApproveAction"
+		class="com.tapi.tcs.vc.order.web.PurchaseApproveAction"
+		scope="prototype">
+		<property name="orderManagerService" ref="orderManagerService" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 单证使用 -->
+	<package name="visaUsage" extends="struts-default" namespace="/visaUsage">
+		<action name="viewCancelSQuery" class="cancelAction" method="viewCancelSQuery">
+			<result name="success">/pages/visausage/jsp/CancelSQuery.jsp</result>
+		</action>
+
+		<action name="viewCancelSNew" class="cancelAction" method="viewCancelSNew">
+			<result name="success">/pages/visausage/jsp/CancelSNew.jsp</result>
+		</action>
+
+		<action name="viewCancelSEdit" class="cancelAction" method="viewCancelSEdit">
+			<result name="success">/pages/visausage/jsp/CancelSEdit.jsp</result>
+		</action>
+
+		<action name="viewCancelSReadonly" class="cancelAction" method="viewCancelSReadonly">
+			<result name="success">/pages/visausage/jsp/CancelSReadonly.jsp</result>
+		</action>
+
+		<action name="viewCancelUsageQuery" class="cancelAction"
+			method="viewCancelUsageQuery">
+			<result name="success">/pages/visausage/jsp/CancelUsageQuery.jsp</result>
+		</action>
+
+		<action name="viewCancelUsageNew" class="cancelAction" method="viewCancelUsageNew">
+			<result name="success">/pages/visausage/jsp/CancelUsageNew.jsp</result>
+		</action>
+
+		<action name="viewCancelUsageEdit" class="cancelAction" method="viewCancelUsageEdit">
+			<result name="success">/pages/visausage/jsp/CancelUsageEdit.jsp</result>
+		</action>
+
+		<action name="viewCancelUsageReadonly" class="cancelAction"
+			method="viewCancelUsageReadonly">
+			<result name="success">/pages/visausage/jsp/CancelUsageReadonly.jsp</result>
+		</action>
+		
+	  <action name="viewCancelApproveQuery" class="cancelAction" method="viewCancelApproveQuery">
+	    <result name="success">/pages/visausage/jsp/CancelApproveQuery.jsp</result>
+	  </action>
+	    
+    <action name="viewCancelApproveEdit" class="cancelAction" method="viewCancelApproveEdit">
+    	<result name="success">/pages/visausage/jsp/CancelApproveEdit.jsp</result>
+    </action>
+
+    <action name="viewCancelApproveReadonly" class="cancelAction" method="viewCancelApproveReadonly">
+    	<result name="success">/pages/visausage/jsp/CancelApproveReadonly.jsp</result>
+    </action>			
+	</package>
+
+	<!-- 单证使用Ajax -->
+	<package name="visaUsageJson" extends="json-default" namespace="/visaUsageJson">
+		<action name="saveCancelS" class="cancelAction" method="saveCancelS">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="saveCancelUsage" class="cancelAction" method="saveCancelUsage">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="queryCancelSListByPages" class="cancelAction"
+			method="queryCancelSListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="queryCancelUsageListByPages" class="cancelAction"
+			method="queryCancelUsageListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="queryCancelListByPages" class="cancelAction"
+			method="queryCancelListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="getDetList2Json" class="cancelAction"
+			method="getDetList2Json">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="deleteCancelList" class="cancelAction"
+			method="deleteCancelList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="saveCancelApprove" class="cancelAction" method="saveCancelApprove">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="submitCancelSList" class="cancelAction" method="submitCancelSList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="submitCancelUsageList" class="cancelAction" method="submitCancelUsageList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>				
+	</package>
+
+	<!-- 遗失申请  start -->
+	<package name="lostApply" extends="struts-default" namespace="/lostApply">
+		<!-- 进入遗失申请查询页面 -->
+		<action name="initLostApplyQuery" class="lostApplyAction"
+			method="initLostApplyQuery">
+			<result name="success">/pages/visausage/jsp/LostApplyQuery.jsp</result>
+		</action>
+
+		<!-- 进入遗失申请天添加页面 -->
+		<action name="initAddLostApply" class="lostApplyAction" method="initAddLostApply">
+			<result name="success">/pages/visausage/jsp/LostApplyEdit.jsp</result>
+		</action>
+
+		<!--保存遗失申请 -->
+		<action name="saveLostApply" class="lostApplyAction" method="saveLostApply">
+			<result name="success">/pages/visausage/jsp/LostApplyQuery.jsp</result>
+			<result name="fail">/pages/visausage/jsp/LostApplyEdit.jsp</result>
+		</action>
+		
+		<!-- 查看遗失申请 -->
+		<action name="viewLostApply" class="lostApplyAction" method="viewLostApply">
+			<result name="view">/pages/visausage/jsp/LostApplyView.jsp</result>
+			<result name="modify">/pages/visausage/jsp/LostApplyEdit.jsp</result>
+			<result name="approveView">/pages/visausage/jsp/LostApprove.jsp</result>
+			<result name="approve">/pages/visausage/jsp/LostApprove.jsp</result>
+		</action>
+
+		<!-- 进入遗失审批页面 -->
+		<action name="initLostApproveQuery" class="lostApplyAction"
+			method="initLostApproveQuery">
+			<result name="success">/pages/visausage/jsp/LostApproveQuery.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="lostApplyJson" extends="json-default" namespace="/lostApplyJson">
+		<!--查询遗失申请 -->
+		<action name="queryLostApply" class="lostApplyAction" method="queryLostApply">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+
+		<!--提交遗失申请 -->
+		<action name="submitLostApply" class="lostApplyAction" method="submitLostApply">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!--删除遗失申请 -->
+		<action name="deleteLostApply" class="lostApplyAction" method="deleteLostApply">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!--查询遗失审批 -->
+		<action name="queryLostApprove" class="lostApplyAction" method="queryLostApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!--遗失审批 -->
+		<action name="executeApprove" class="lostApplyAction" method="executeApprove">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<!-- 遗失申请  end -->
+
+
+	<!-- 销毁  start -->
+	<package name="destroy" extends="struts-default" namespace="/destroy">
+
+		<!-- 进入销毁申请查询页面 -->
+		<action name="initDestroyQuery" class="destroyAction" method="initDestroyQuery">
+			<result name="success">/pages/visausage/jsp/DestroyQuery.jsp</result>
+		</action>
+
+		<!-- 进入销毁添加页面 -->
+		<action name="initDestroyAdd" class="destroyAction" method="initDestroyAdd">
+			<result name="success">/pages/visausage/jsp/DestroyEdit.jsp</result>
+		</action>
+
+		<!--保存/更新销毁申请 -->
+		<action name="saveDestroy" class="destroyAction" method="saveDestroy">
+			<result name="success">/pages/visausage/jsp/DestroyQuery.jsp</result>
+			<result name="fail">/pages/visausage/jsp/DestroyEdit.jsp</result>
+		</action>
+
+		<!-- 进入销毁编辑页面 -->
+		<action name="initDestroyEdit" class="destroyAction" method="initDestroyEdit">
+			<result name="modify">/pages/visausage/jsp/DestroyEdit.jsp</result>
+			<result name="view">/pages/visausage/jsp/DestroyApprove.jsp</result>
+		</action>
+
+		<!-- 进入销毁审批查询页面 -->
+		<action name="initDestroyApproveQuery" class="destroyAction"
+			method="initDestroyApproveQuery">
+			<result name="success">/pages/visausage/jsp/DestroyApproveQuery.jsp</result>
+		</action>
+
+		<!-- 进入销毁审批页面 -->
+		<action name="initDestroyApprove" class="destroyAction" method="initDestroyApprove">
+			<result name="success">/pages/visausage/jsp/DestroyApprove.jsp</result>
+		</action>
+	</package>
+
+	<package name="destroyJson" extends="json-default" namespace="/destroyJson">
+		<!--查询销毁申请 -->
+		<action name="queryDestroy" class="destroyAction" method="queryDestroy">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!--提交销毁申请 -->
+		<action name="submitDestroy" class="destroyAction" method="submitDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!--删除销毁申请 -->
+		<action name="deleteDestroy" class="destroyAction" method="deleteDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!--查询销毁审批 -->
+		<action name="queryDestroyApprove" class="destroyAction"
+			method="queryDestroyApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!--销毁审批 -->
+		<action name="approveDestroy" class="destroyAction" method="approveDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+	</package>
+	<!-- 销毁  end -->
+
+</struts>

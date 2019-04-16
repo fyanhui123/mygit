@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- 遗失申请Action -->
+	<bean id="lostApplyAction" class="com.tapi.tcs.vc.visausage.web.LostApplyAction"
+		scope="prototype">
+		<property name="lostApplyService" ref="lostApplyService" />
+	</bean>
+	
+	<!-- 作废申请Action -->
+	<bean id="cancelAction" class="com.tapi.tcs.vc.visausage.web.CancelAction" scope="prototype">
+		<property name="cancelService" ref="cancelService" />
+		<property name="vcLevelService" ref="vcLevelService" />
+		<property name="pubCodeManagerService" ref="pubCodeManagerService" />
+	</bean>	
+	
+	<!-- 销毁申请Action -->
+	<bean id="destroyAction" class="com.tapi.tcs.vc.visausage.web.DestroyAction" scope="prototype">
+		<property name="destroyService" ref="destroyService" />
+	</bean>	
+</beans>

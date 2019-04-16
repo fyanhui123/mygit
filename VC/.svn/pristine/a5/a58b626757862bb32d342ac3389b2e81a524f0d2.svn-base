@@ -1,0 +1,23 @@
+rootXmlName = INVOICE_PRINT_LIST
+#please split with , when many company code configuration
+common.companyCodes = 0153
+
+invoiceXml.valid.sql = not exists (select 1  from vc_invoice_print t   where t.status = '1'    and t.print_kind = '3'  and t.doc_ver_code = main.doc_ver_code   and t.invoice_code = main.invoice_code   and t.invoice_no = main.invoice_no) and main.status = '1' and main.print_kind='1' and main.is_upload_plat<>'1'  and main.print_date >= to_date('2014-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss') and main.org_code = ? 
+				   
+invoiceXml.invalid.sql = exists (select 1  from vc_invoice_print t   where t.status = '1'    and t.print_kind = '1'   and t.doc_ver_code = main.doc_ver_code   and t.invoice_code = main.invoice_code   and t.invoice_no = main.invoice_no)  and main.status = '1' and main.print_kind='3'  and main.is_upload_plat<>'1' and main.print_date >= to_date('2014-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss') and main.org_code = ?
+   
+invoiceXml.main.sql = select main.DATE_UPDATED,    main.UPDATED_BY,    main.DATE_CREATED,    main.CREATED_BY,main.IS_UPLOAD_PLAT,    main.STATUS,  main.ITEMS,main.INVOICE_TYPE,main.INVOICE_KIND_NAME,main.INVOICE_KIND_CODE,main.BANK_CODE,main.ZG_INDUSTRY,main.REGISTRATION,main.BANK,main.ACCOUNT,main.PRINT_TYPE_CODE,main.INDUSTRY_NAME,main.INDUSTRY_CODE,main.UPPER_AMOUNT,main.TAX_RATE,main.TAX_AMOUNT,main.CHECK_NUM,main.END_DATE,main.START_DATE,main.MACHINE_PRINTED_NO,main.MACHINE_PRINTED_CODE,main.BELONG_STAGE,main.SETTLE_ITEM,main.MANAGE_CODE,main.TAX_ORG,main.PRINT_KIND,main.OPERATE_DATE,main.REMARK,main.CANCELED_DATE,main.CANCELED_OPR_NAME,main.COUNTERACTED_INVOICE_NO,main.COUNTERACTED_INVOICE_CODE,main.COUNTERACT_INVOICE_NO,main.COUNTERACT_INVOICE_CODE,main.RECIPIENT_OPR,main.BILLER_NAME,main.TAXPAYER_CODE,main.TAXPAYER_NAME,main.RECIPIENT_CODE,main.RECIPIENT_NAME,main.PAYER_CODE,main.PAYER_NAME,main.AMOUNT,main.PRINT_DATE,main.INVOICE_NO,main.INVOICE_NAME,main.INVOICE_CODE,main.ENDORSE_NO,main.POLICY_NO,main.ORG_CODE,main.DOC_VER_CODE,main.ID_VC_INVOICE_PRINT,main.ORIGION_ID,main.CANCELED_OPR_CODE,main.COMPUTER_NO,ext.APPLY_NAME EXT_APPLY_NAME,ext.PREMIUM EXT_PREMIUM,   ext.RISK_NAME EXT_RISK_NAME,   ext.ID_VC_INVOICE_PRINT EXT_ID_VC_INVOICE_PRINT,   ext.ID_VC_INVOICE_PRINT_EXT EXT_ID_VC_INVOICE_PRINT_EXT,   ext.DATE_UPDATED EXT_DATE_UPDATED,   ext.UPDATED_BY EXT_UPDATED_BY,   ext.DATE_CREATED EXT_DATE_CREATED,   ext.CREATED_BY EXT_CREATED_BY,   ext.FORCURR_AMOUNT EXT_FORCURR_AMOUNT,   ext.QUOTEPRICE_DATE EXT_QUOTEPRICE_DATE,   ext.EXCHANGE_RATE EXT_EXCHANGE_RATE,   ext.CURRENCY EXT_CURRENCY,   ext.LATE_FEE EXT_LATE_FEE,   ext.TAX_AMOUNT EXT_TAX_AMOUNT,   ext.PAY_DATE_END EXT_PAY_DATE_END,   ext.PAY_DATE_START EXT_PAY_DATE_START,   ext.FRAME_NO EXT_FRAME_NO,   ext.ENGINE_NO EXT_ENGINE_NO,   ext.AMOUNT EXT_AMOUNT,   ext.ITEM EXT_ITEM,   ext.USE_NATURE EXT_USE_NATURE,   ext.LAST_END_DATE EXT_LAST_END_DATE,   ext.QUANTITY EXT_QUANTITY,   ext.UNIT EXT_UNIT,   ext.CAR_KIND EXT_CAR_KIND,   ext.LICENSE_NO EXT_LICENSE_NO,   ext.CAR_AREA_CODE EXT_CAR_AREA_CODE,   ext.CAR_AREA_NAME EXT_CAR_AREA_NAME,   ext.RISK_CODE EXT_RISK_CODE,   ext.FUEL_CATEGORY EXT_FUEL_CATEGORY,   ext.AREA_NAME EXT_AREA_NAME,   ext.AREA_CODE EXT_AREA_CODE  from vc_invoice_print main left join VC_INVOICE_PRINT_EXT ext   on (main.id_vc_invoice_print = ext.id_vc_invoice_print) where  
+   
+invoiceXml.sql = with list as (${invoiceXml.main.sql}   ${invoiceXml.valid.sql}    union all    ${invoiceXml.main.sql}   ${invoiceXml.invalid.sql} ) select * from list where rownum <=1000
+
+taxLogin.sql = select * from(select t.DATE_UPDATED,    t.UPDATED_BY,   t.DATE_CREATED,    t.CREATED_BY, t.STATUS,t.ORG_CODE,  t.PASSWORD,t.LOGIN_CODE, t.COMPUTER_NO,t.ID_VC_TAXPAYER_LOGIN, ROWNUM rNum  from VC_TAXPAYER_LOGIN t where t.org_code like ?  and t.status='1' order by t.org_code ASC)temp where temp.rNum between ? and ?
+taxLogin.count.sql = select  COUNT( t.id_vc_taxpayer_login) from VC_TAXPAYER_LOGIN t where t.org_code like ?   and t.status='1' 
+
+invoice.tax.timer = ${mvar.invoice.tax.timer}
+  
+invoice.FjUpload.timer = ${mvar.invoice.FjUpload.timer}
+
+invoice.chongQingUpload.timer = ${mvar.invoice.chongQingUpload.timer}
+
+account.importBisDocNumFile.importTimer = ${mvar.account.importBisDocNumFile.importTimer}
+account.importBisDocNumFile.acctountTimer = ${mvar.account.importBisDocNumFile.acctountTimer}

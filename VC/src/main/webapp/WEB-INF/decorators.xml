@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/decorators">
+	<excludes>
+		<pattern>*ajax=true*</pattern>
+		<pattern>*/style/*</pattern>
+		<pattern>*My97DatePicker*</pattern>
+	</excludes>
+
+	<decorator name="window" page="noLayout.jsp">
+	</decorator>
+	
+	<decorator name="default" page="mainLayout.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+
+</decorators>

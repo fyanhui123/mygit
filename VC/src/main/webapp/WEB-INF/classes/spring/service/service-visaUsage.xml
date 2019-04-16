@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<!-- 遗失申请Service -->
+	<bean id="lostApplyService" class="com.tapi.tcs.vc.visausage.service.impl.LostApplyServiceImpl">
+		<property name="vcLostDao" ref="vcLostDao" />
+		<property name="vcAvailableDocDao" ref="vcAvailableDocDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="abnormalVerificationDao" ref="abnormalVerificationDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>	
+	
+	<!-- 作废申请Service -->
+	<bean id="cancelService" class="com.tapi.tcs.vc.visausage.service.impl.CancelServiceImpl">
+		<property name="cancelDao" ref="cancelDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />		
+		<property name="approveDao" ref="approveDao" />
+		<property name="abnormalVerificationDao" ref="abnormalVerificationDao" />
+		<property name="normalVerificationDao" ref="normalVerificationDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>	
+	
+	<!-- 销毁申请Service -->
+	<bean id="destroyService" class="com.tapi.tcs.vc.visausage.service.impl.DestroyServiceImpl">
+		<property name="destroyDao" ref="destroyDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="abnormalVerificationDao" ref="abnormalVerificationDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>	
+	
+	<!-- Service -->
+	<bean id="docValidQueryService" class="com.tapi.tcs.vc.visausage.service.impl.DocValidQueryServiceImpl">
+		<property name="normalVerificationDao" ref="normalVerificationDao" />
+		<property name="vcAvailableDocDao" ref="vcAvailableDocDao" />
+	</bean>	
+	
+	
+	
+</beans>
+
+

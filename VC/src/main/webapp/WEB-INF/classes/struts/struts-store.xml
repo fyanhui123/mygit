@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<!-- 单证调拨业务begin -->
+	<package name="allot" extends="struts-default" namespace="/allot">
+			<action name="viewAllotView" class="com.tapi.tcs.vc.store.web.AllotAction" method="viewAllotView">
+			<result name="success">/pages/store/jsp/AllotView.jsp</result>
+		    </action>
+			<action name="allotApplyQuery" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotApplyQuery">
+			     <result name="success">/pages/store/jsp/AllotStorageQuery.jsp</result>
+		    </action>
+		    <action name="allotApproveQuery" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotApproveQuery">
+			     <result name="success">/pages/store/jsp/AllotList.jsp</result>
+		    </action>
+		    <action name="allotInquiryQuery" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotInquiryQuery">
+			     <result name="success">/pages/store/jsp/AllotStorages.jsp</result>
+		    </action>
+		    <!-- 单证调拨申请自动添加到表格内的action-->
+		    <action name="allotAddInfo" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotAddInfo">
+			     <result name="success">/pages/store/jsp/AllotStorageNew.jsp</result>
+		    </action>
+		      <!-- 单证调拨审批自动添加到表格内的action-->
+		    <action name="allotApproveInfo" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotApproveInfo">
+			     <result name="success">/pages/store/jsp/AllotApprove.jsp</result>
+		    </action>
+		    <!-- 单证调拨入库自动添加到表格内的action-->
+		    <action name="allotStorageInfo" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotStorageInfo">
+			     <result name="success">/pages/store/jsp/AllotStoragesConfirm.jsp</result>
+		    </action>
+	</package>
+	<package name="allotJson" extends="json-default" namespace="/allotJson">
+			 <action name="allotQueryInfo" class="com.tapi.tcs.vc.store.web.AllotAction" method="allotQueryInfo">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		    </action>
+		    <action name="saveAllot" class="com.tapi.tcs.vc.store.web.AllotAction" method="saveAllot">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		    </action>
+		     <action name="submitAllotList" class="com.tapi.tcs.vc.store.web.AllotAction" method="submitAllotList">
+			       <result type="json">
+				            <param name="root">jsonStr</param>
+			       </result>
+		    </action>
+		    
+		     <action name="deleteAllotList" class="com.tapi.tcs.vc.store.web.AllotAction" method="deleteAllotList">
+			       <result type="json">
+				            <param name="root">jsonStr</param>
+			       </result>
+		    </action>
+		    
+	</package>
+	<package name="provideAllot" extends="struts-default" namespace="/provideAllot">
+			<action name="queryProvideAllotInfo" class="com.tapi.tcs.vc.store.web.ProvideAllotAction" method="queryProvideAllotInfo">
+			     <result name="success">/pages/store/jsp/AllotApprove.jsp</result>
+		    </action>
+		    <action name="provideConfirmEdit" class="com.tapi.tcs.vc.store.web.ProvideAllotAction"
+			method="provideConfirmEdit">
+			<result name="success">/pages/store/jsp/AllotStoragesConfirm.jsp</result>
+		</action>
+		    
+	</package>
+		<package name="provideAllotJson" extends="json-default" namespace="/provideAllotJson">
+			 <action name="queryAllotListByPages" class="com.tapi.tcs.vc.store.web.ProvideAllotAction" method="queryAllotListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		    </action>
+		    
+		    <action name="getJsonDocVersions" class="com.tapi.tcs.vc.store.web.ProvideAllotAction"
+			method="qeuryJsonDocVersion">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+			 </action>
+		<action name="saveProvides" class="com.tapi.tcs.vc.store.web.ProvideAllotAction"
+			method="saveProvide">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="saveProvideConfirms" class="com.tapi.tcs.vc.store.web.ProvideAllotAction"
+			method="saveProvideConfirm">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		   
+	</package>
+	
+	<!-- 单证机构申领begin -->
+	<package name="apply" extends="struts-default" namespace="/apply">
+
+		<action name="viewApplyQuery" class="applyAction" method="viewApplyQuery">
+			<result name="success">/pages/store/jsp/ApplyQuery.jsp</result>
+		</action>
+
+		<action name="viewApplyNew" class="applyAction" method="viewApplyNew">
+			<result name="success">/pages/store/jsp/ApplyNew.jsp</result>
+		</action>
+
+		<action name="viewApplyEdit" class="applyAction" method="viewApplyEdit">
+			<result name="success">/pages/store/jsp/ApplyEdit.jsp</result>
+		</action>
+
+		<action name="viewApplyView" class="applyAction" method="viewApplyView">
+			<result name="success">/pages/store/jsp/ApplyView.jsp</result>
+		</action>
+	</package>
+
+	<package name="applyJson" extends="json-default" namespace="/applyJson">
+		<action name="exportList" class="com.tapi.tcs.vc.store.web.ApplyAction"
+			method="exportList">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>	
+	
+	
+		<action name="saveApply" class="applyAction" method="saveApply">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="queryApplyListByPages" class="applyAction"
+			method="queryApplyListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="queryValidStorageListByPages" class="applyAction"
+			method="queryValidStorageListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="queryAvailableListByPages" class="applyAction"
+			method="queryAvailableListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="deleteApplyList" class="applyAction" method="deleteApplyList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="submitApplyList" class="applyAction" method="submitApplyList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>		
+
+		<action name="getApplyDetList" class="applyAction" method="queryApplyDetList">
+			<result type="json">
+				<param name="root">vcApplyDetLst</param>
+			</result>
+		</action>
+		
+		<action name="getValidStorageNum" class="applyAction" method="queryValidStorageNum">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>		
+		
+		<action name="getValidStorageNum2" class="applyAction" method="queryValidStorageNum2">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>		
+
+	</package>
+	<!-- 单证机构申领end -->
+
+	<!-- 单证机构发放begin -->
+	<package name="provide" extends="struts-default" namespace="/provide">
+
+		<action name="viewProvideQuery" class="provideAction" method="viewProvideQuery">
+			<result name="success">/pages/store/jsp/ProvideQuery.jsp</result>
+		</action>
+
+		<action name="viewProvideEdit" class="provideAction" method="viewProvideEdit">
+			<result name="success">/pages/store/jsp/ProvideEdit.jsp</result>
+		</action>
+
+		<action name="viewProvideConfirmQuery" class="provideConfirmAction"
+			method="viewProvideConfirmQuery">
+			<result name="success">/pages/store/jsp/ProvideConfirmQuery.jsp</result>
+		</action>
+
+		<action name="viewProvideConfirmEdit" class="provideConfirmAction"
+			method="viewProvideConfirmEdit">
+			<result name="success">/pages/store/jsp/ProvideConfirmEdit.jsp</result>
+		</action>
+
+		<action name="viewProvideIntegratedQuery" class="provideIntegratedQueryAction" method="viewProvideIntegratedQuery">
+			<result name="success">/pages/store/jsp/ProvideIntegratedQuery.jsp</result>
+		</action>
+		
+		<action name="viewProvideIntegratedQueryDET" class="provideIntegratedQueryAction" method="viewProvideIntegratedQueryDET">
+			<result name="success">/pages/store/jsp/ProvideIntegratedQueryDET.jsp</result>
+		</action>
+	</package>
+
+	<package name="provideJson" extends="json-default" namespace="/provideJson">
+
+		<action name="queryApplyListByPages" class="provideAction"
+			method="queryApplyListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="getApplyDetList" class="provideAction" method="queryApplyDetList">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+
+		<action name="saveProvide" class="provideAction" method="saveProvide">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+
+		<action name="queryProvideProcessListByPages" class="provideConfirmAction"
+			method="queryProvideProcessListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="getProvideDetProcessList" class="provideConfirmAction"
+			method="getProvideDetProcessList">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+
+		<action name="saveProvideConfirm" class="provideConfirmAction"
+			method="saveProvideConfirm">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+		
+		<action name="getJsonDocVersion" class="provideAction"
+			method="qeuryJsonDocVersion">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<action name="getJsonApplyNum" class="provideAction"
+			method="queryJsonApplyNum">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+		
+		<action name="getJsonDaedLine" class="provideAction"
+			method="queryJsonDaedLine">
+			<result type="json">
+				<param name="root">json</param>
+			</result>
+		</action>
+
+	</package>
+	<!-- 单证机构发放end -->
+
+	<package name="store" extends="struts-default" namespace="/store">
+		<!-- 进入查询印刷入库页面  -->
+		<action name="initDocInStoreQuery" class="docInStoreManageAction"
+			method="initDocInStoreQuery">
+			<result name="success">/pages/store/jsp/DocumentInStoreApplyQuery.jsp</result>
+		</action>
+
+		<!-- 进入添加印刷入库页面  -->
+		<action name="initAddDocInStore" class="docInStoreManageAction"
+			method="initAddDocInStore">
+			<result name="success">/pages/store/jsp/DocumentInStoreApplyEdit.jsp</result>
+		</action>
+
+		<!-- 查看印刷入库  -->
+		<action name="viewDocInStore" class="docInStoreManageAction"
+			method="viewDocInStore">
+			<result name="success">/pages/store/jsp/DocumentInStoreApplyView.jsp</result>
+			<result name="modify">/pages/store/jsp/DocumentInStoreApplyEdit.jsp</result>
+		</action>
+
+		<!-- 进入印刷入库审批查询页面  -->
+		<action name="initDocInStoreApproveQuery" class="docInStoreManageAction"
+			method="initDocInStoreApproveQuery">
+			<result name="success">/pages/store/jsp/DocumentInStoreApproveQuery.jsp</result>
+		</action>
+
+		<!-- 进入印刷入库审批页面  -->
+		<action name="initDocInStoreApprove" class="docInStoreManageAction"
+			method="initDocInStoreApprove">
+			<result name="success">/pages/store/jsp/DocumentInStoreApproveEdit.jsp</result>
+		</action>
+
+		<!-- 保存印刷入库  -->
+		<action name="saveDocInStore" class="docInStoreManageAction"
+			method="saveDocInStore">
+			<result name="success">/pages/store/jsp/DocumentInStoreApplyQuery.jsp</result>
+			<result name="fail">/pages/store/jsp/DocumentInStoreApplyEdit.jsp</result>
+		</action>
+	</package>
+
+	<package name="storeJson" extends="json-default" namespace="/storeJson">
+		<!--查询印刷入库申请 -->
+		<action name="queryDocInStore" class="docInStoreManageAction"
+			method="queryDocInStore">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!--查询印刷入库审批  -->
+		<action name="queryDocInStoreApprove" class="docInStoreManageAction"
+			method="queryDocInStoreApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!-- 删除印刷入库  -->
+		<action name="deleteDocInStore" class="docInStoreManageAction"
+			method="deleteDocInStore">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!-- 提交印刷入库申请  -->
+		<action name="submitDocInStore" class="docInStoreManageAction"
+			method="submitDocInStore">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!-- 印刷入库审批  -->
+		<action name="approveDocInStore" class="docInStoreManageAction"
+			method="approveDocInStore">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 单证机构回收 -->
+	<package name="recycle" extends="struts-default" namespace="/recycle">
+
+		<action name="viewRecycleQuery" class="recycleAction" method="viewRecycleQuery">
+			<result name="success">/pages/store/jsp/RecycleQuery.jsp</result>
+		</action>
+
+		<action name="viewRecycleEdit" class="recycleAction" method="viewRecycleEdit">
+			<result name="success">/pages/store/jsp/RecycleEdit.jsp</result>
+		</action>
+
+		<action name="viewRecycleNew" class="recycleAction" method="viewRecycleNew">
+			<result name="success">/pages/store/jsp/RecycleNew.jsp</result>
+		</action>
+
+		<action name="viewRecycleReadonly" class="recycleAction"
+			method="viewRecycleReadonly">
+			<result name="success">/pages/store/jsp/RecycleReadonly.jsp</result>
+		</action>
+
+		<action name="viewRecycleConfirmQuery" class="recycleConfirmAction"
+			method="viewRecycleConfirmQuery">
+			<result name="success">/pages/store/jsp/RecycleConfirmQuery.jsp</result>
+		</action>
+
+		<action name="viewRecycleConfirmEdit" class="recycleConfirmAction"
+			method="viewRecycleConfirmEdit">
+			<result name="success">/pages/store/jsp/RecycleConfirmEdit.jsp</result>
+		</action>
+
+
+	</package>
+
+	<package name="recycleJson" extends="json-default" namespace="/recycleJson">
+
+		<action name="saveRecycle" class="recycleAction" method="saveRecycle">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="queryRecycleListByPages" class="recycleAction"
+			method="queryRecycleListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="getRecycleDetListByJson" class="recycleAction"
+			method="getRecycleDetListByJson">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="getAwaitConfrimRecycleList" class="recycleConfirmAction"
+			method="getAwaitConfrimRecycleList">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="saveRecycleConfirm" class="recycleConfirmAction"
+			method="saveRecycleConfirm">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="deleteRecycleList" class="recycleAction" method="deleteRecycleList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="submitRecycleList" class="recycleAction" method="submitRecycleList">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>				
+	</package>
+
+	<!-- 使用人单证管理 发放和回收  -->
+	<package name="servantDocManage" extends="struts-default"
+		namespace="/servantDocManage">
+		<!-- 进入使用人单证发放查询页面  -->
+		<action name="initServantDocIssuedQuery" class="servantDocManageAction"
+			method="initServantDocIssuedQuery">
+			<result name="success">/pages/store/jsp/ServantDocumentIssuedQuery.jsp</result>
+		</action>
+
+		<!-- 进入使用人单证回收查询页面  -->
+		<action name="initServantDocRecoveryQuery" class="servantDocManageAction"
+			method="initServantDocRecoveryQuery">
+			<result name="success">/pages/store/jsp/ServantDocumentRecoveryQuery.jsp</result>
+		</action>
+		
+		<!--  初始化使用人单证发放添加页面  -->
+		<action name="initServantDocIssuedAdd" class="servantDocManageAction"
+			method="initServantDocIssuedAdd">
+			<result name="success">/pages/store/jsp/ServantDocumentIssuedAdd.jsp</result>
+		</action>
+		
+		
+		<!-- 初始化使用人单证回收添加页面  -->
+		<action name="initServantDocRecoveryAdd" class="servantDocManageAction"
+			method="initServantDocRecoveryAdd">
+			<result name="success">/pages/store/jsp/ServantDocumentRecoveryAdd.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- 使用人单证管理 发放和回收  -->
+	<package name="servantDocManageJson" extends="json-default"
+		namespace="/servantDocManageJson">
+		<action name="queryServantDoc" class="servantDocManageAction"
+			method="queryServantDoc">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!-- 保存使用人单证发放 -->
+		<action name="saveServantDocIssued" class="servantDocManageAction"
+			method="saveServantDocIssued">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<!-- 保存使用人单证回收 -->
+		<action name="saveServantDocRecovery" class="servantDocManageAction"
+			method="saveServantDocRecovery">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 获取最长库存时间  -->
+		<action name="findMaxStoreTime" class="servantDocManageAction"
+			method="findMaxStoreTime">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>		
+	</package>
+	
+	<package name="storeInOut" extends="struts-default" namespace="/storeInOut">
+		<!-- 进入查询单证出入库页面  -->
+		<action name="initQueryStorageInOut" class="vcStorageInOutAction"
+			method="initQueryStorageInOut">
+			<result name="success">/pages/store/jsp/DocStorageInOutQuery.jsp</result>
+		</action>
+		<!-- 进入出入库新增页面  -->
+		<action name="initStorageInOutAdd" class="vcStorageInOutAction"
+			method="initStorageInOutAdd">
+			<result name="success">/pages/store/jsp/DocStorageInOutAdd.jsp</result>
+		</action>
+		<!-- 执行出入库  -->
+		<action name="executeStorageInOut" class="vcStorageInOutAction"
+			method="executeStorageInOut">
+			<result name="success">/pages/store/jsp/DocStorageInOutQuery.jsp</result>
+			<result name="fail">/pages/store/jsp/DocStorageInOutAdd.jsp</result>
+		</action>
+	</package>
+	<package name="storeInOutJson" extends="json-default" namespace="/storeInOutJson">
+		<!--查询单证出入库 -->
+		<action name="queryStorageInOutByPages" class="vcStorageInOutAction"
+			method="queryStorageInOutByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="executeStorageInOut" class="vcStorageInOutAction"
+			method="executeStorageInOut">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+		
+</struts>

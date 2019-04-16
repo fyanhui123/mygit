@@ -1,0 +1,265 @@
+
+
+
+.tableTr{
+  background-color: #EEEEEE;
+}
+
+/*
+.blankDiv {
+	height: 10px;
+}*/
+
+.redStar {
+	vertical-align: middle;
+	font-size: 20px;
+	color: red;
+}
+
+.btForInput {
+	font-size: 8px;
+	vertical-align: middle;
+}
+.btForSearchCol {
+	border: 1px solid #AABFEC;
+	PADDING: 2px;  
+	FONT-SIZE: 12px; 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#E4F1FB, EndColorStr=#E4F1FB); 
+	BORDER-LEFT: #AABFEC 1px solid; 
+	CURSOR: pointer; 
+	COLOR: black; 
+	height: 21px;
+}
+.btForSearchBig {
+    border: 1px solid #AABFEC;
+	PADDING: 2px; 
+	FONT-SIZE: 12px; 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#E4F1FB, EndColorStr=#E4F1FB); 
+	COLOR: black; 
+	height: auto;
+	width:75px;
+	cursor: pointer;
+}
+.fixedTable {
+	width: 100%;
+	border: 1px solid #799AE1;
+	border-collapse: collapse;
+}
+
+.fixedTable tr {
+	text-align: left;
+}
+
+.fixedTable td {
+	border: 1px solid #799AE1;
+	border-collapse: collapse;
+}
+
+.ui-autocomplete-oneinput {
+	width:158px;
+	background-color:#D3E1FB;
+	border:1px solid #9196B4;
+}
+
+
+
+body{
+	overflow-x:auto;
+	background-color: #ffffff;
+}
+/*html{overflow-x: hidden; overflow-y: auto;}*/
+
+.page-title{
+	cursor:pointer;
+}
+
+.pageTitle01{
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	padding-right: 5px;
+	background-position: top;
+	width: 5px;
+	}
+.pageTitleText {
+	font-size: 14px;
+	font-weight: bolder;
+	white-space: nowrap;
+	color: #00295c;
+	padding-top: 3px;
+
+}
+
+
+
+.page-title tr{
+	height: 20px;
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#list01{
+	width: 94%;
+	position:relative;
+	overflow:scroll;
+	overflow-x:scroll;
+	overflow-y:hidden;
+	margin-left: 20px;
+}
+#list02{
+	width: 94%;
+	position:relative;
+	margin-left: 20px;
+}
+#list03{
+	width: 96%;
+	position:relative;
+	margin-left: 20px;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+#list04{
+	width: 96%;
+	position:relative;
+	margin-left: 20px;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+/*閿熸枻鎷疯壊閿熻鐚存嫹*/
+.dot{
+	font-size: 14px;
+	color: red;
+	text-decoration: none;
+	font-weight: bold;
+	padding-left: 10px;
+}
+.fontred12{
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #FF0000;
+	margin-left: 30px;
+}
+/*閿熼摪纰夋嫹褰曢敓璇�閿熸枻鎷烽敓鏂ゆ嫹褰曢敓鏂ゆ嫹1閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷疯閿熸枻鎷�/
+.list_jianju{
+	padding: 8px;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	line-height: 20px;
+}
+/*閿熸枻鎷峰墠浣嶉敓鏂ゆ嫹*/
+#pagetab{
+	font-size: 12px;
+	line-height: 30px;
+	color: #00295c;
+	text-align: left;
+	vertical-align: middle;
+	background-color: #e2eef5;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #bbbbbb;
+}
+#pagetab td{
+	padding-left: 5px;
+}
+/********3閿熸枻鎷烽〉閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷峰紡閿熸枻鎷峰師閿熸枻鎷穟l.mulLine閿熸枻鎷烽敓锟�*******/
+/*--TABLE閿熸枻鎷烽敓鏂ゆ嫹寮�-*/
+    table.muline{
+	background-color: #F7F7F7;
+	cellspacing:0;
+	cellpadding:0;
+	/*BORDER-LEFT: #aed0ea 1pt solid;
+	BORDER-BOTTOM: #aed0ea 1pt solid;*/
+	font-size: 12px;
+	line-height: 26px;
+	color: #000000;
+                }
+
+/*--TD閿熸枻鎷烽敓鏂ゆ嫹寮�-*/
+    td.mulinetitle {
+		text-align: center;
+    	/* border-right: 1px solid #AED0EA;
+    	border-bottom: 1px solid #AED0EA; */
+    	padding: 0 5px;
+    }
+    
+    td.muline {
+      	text-align: center;
+       	/* border-right: 1px solid #AED0EA;
+    	border-bottom: 1px solid #AED0EA; */
+    	padding: 1px 3px;
+     }
+    
+/*--閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷峰憯閿燂拷-*/
+.ui-01{
+	font-size: 12px;
+	color: #000000;
+	margin-top: 1px;
+	margin-right: 3px;
+	margin-bottom: 1px;
+	margin-left: 3px;
+	border: 1px solid #9196b4;
+}
+/*--閿熸枻鎷烽敓鎻紮鎷烽偑閿熻剼锔兼嫹鍙堕敓鏂ゆ嫹閿熸枻鎷烽敓缁烇拷-*/
+#footbtn_right{
+	float: right;
+	margin-right: 20px;
+}
+
+
+/*閿熼摪鏂ゆ嫹閿熷壙鎲嬫嫹閿熸枻鎷蜂笟*/
+/*閿熸枻鎷烽敓鏂ゆ嫹鎭敓鍙唻鎷�/
+basisInfo00{
+	text-decoration: none;
+	text-align: left;
+	vertical-align: middle;
+	width: 96%;
+	padding-left: 25px;
+}
+basisInfo01{
+	font-size: 12px;
+	line-height: 30px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	vertical-align: middle;
+	width: 10%;
+}
+basisInfo02{
+	font-size: 12px;
+	line-height: 30px;
+	color: #000000;
+	text-decoration: none;
+	text-align: left;
+	vertical-align: middle;
+	width: 30%;
+}
+
+.hrStyle{
+	text-align:left;
+	width:94%;
+	margin-left:30px;
+}
+/*閿熸枻鎷烽敓瑙掑府鎷烽敓鏂ゆ嫹绮橀敓鏂ゆ嫹閿熸枻鎷烽儜閿熸枻鎷峰憳閿熻銈忔嫹閿熸枻鎷烽敓鏂ゆ嫹閿燂拷
+#tableBorder{
+	padding-left: 25px;
+	margin-left: 25px;
+}#b01{
+	float: left;
+	width: 90%;
+	margin-left: 35px;
+}*/
+
+.width100 {
+	width: 100px;
+}
+.mergeTd-top {
+	BORDER-BOTTOM: #fff 1pt solid;
+}
+.mergeTd-left {	
+	BORDER-right: #fff 1pt solid;
+}

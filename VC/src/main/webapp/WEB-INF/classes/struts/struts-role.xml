@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="role" extends="struts-default" namespace="/role">
+		<!-- 单证角色清单查询-->
+		<action name="roleListQuery" class="com.tapi.tcs.vc.rolelist.web.RoleListAction" method="roleListQuery">
+			<result name="success">/pages/role/jsp/RoleList.jsp</result>
+		</action>
+		<action name="roleTakeListQuery" class="com.tapi.tcs.vc.rolelist.web.RoleListAction" method="roleTakeListQuery">
+			<result name="success">/pages/role/jsp/RoleTakerList.jsp</result>
+		</action>
+	</package>
+	
+	<package name="roleJson" extends="json-default" namespace="/roleJson"> 
+		<!--单证角色清单分页查询-->
+		<action name="roleList" class="com.tapi.tcs.vc.rolelist.web.RoleListAction"
+			method="roleList">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+	    <action name="exportRoleListInquiry" class="com.tapi.tcs.vc.rolelist.web.RoleListAction"
+			method="exportRoleListInquiry">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>	
+	</package>
+	<!-- 发票销毁部分 -->
+	<package name="invoiceDestroy" extends="struts-default" namespace="/invoiceDestroy">
+		<!-- 发票销毁页面-->  
+		<action name="destroyQuery" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="destroyQuery">
+			<result name="success">/pages/newInvoice/jsp/DestroyQuery.jsp</result>
+		</action>
+		<!-- 进入销毁添加页面 -->
+		<action name="initDestroyAdd" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="initDestroyAdd">
+			<result name="success">/pages/newInvoice/jsp/DestroyEdit.jsp</result>
+		</action>
+		<!--保存/更新销毁申请 -->
+		<action name="saveDestroy" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="saveDestroy">
+			<result name="success">/pages/newInvoice/jsp/DestroyQuery.jsp</result>
+			<result name="fail">/pages/newInvoice/jsp/DestroyEdit.jsp</result>
+		</action>
+		<!-- 进入销毁修改页面 -->
+		<action name="initDestroyEdit" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="initDestroyEdit">
+			<result name="modify">/pages/newInvoice/jsp/DestroyEdit.jsp</result>
+			<result name="view">/pages/newInvoice/jsp/DestroyApprove.jsp</result>
+		</action>
+		<!-- 进入到销毁审批查询页面 -->
+		<action name="invoiceDestroyApproveQuery" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="invoiceDestroyApproveQuery">
+			<result name="success">/pages/newInvoice/jsp/DestroyApproveQuery.jsp</result>
+		</action>
+		<!-- 进入销毁审批页面 -->
+		<action name="initDestroyApprove" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="initDestroyApprove">
+			<result name="success">/pages/newInvoice/jsp/DestroyApprove.jsp</result>
+		</action>
+	</package>
+	<package name="invoiceDestroyJson" extends="json-default" namespace="/invoiceDestroyJson"> 
+	<!-- 发票缴销点击查询的时候查询非正常核销表内为缴销的单证 -->
+	<action name="queryValidStorageListByPages" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction"
+			method="queryValidStorageListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	</action>
+	<!--查询页面点击查询的时候查询的查询结果 -->
+	<action name="queryDestroy" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="queryDestroy">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+    </action>
+    <!--提交销毁申请 -->
+		<action name="submitDestroy" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="submitDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!--删除销毁申请 -->
+		<action name="deleteDestroy" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="deleteDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 查询发票销毁 -->
+		<action name="queryDestroyApprove" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction"
+			method="queryDestroyApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!--销毁审批 -->
+		<action name="approveDestroy" class="com.tapi.tcs.vc.newInvoice.web.InvoiceDestroyAction" method="approveDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	 <package name="newinvoice" extends="struts-default" namespace="/newinvoice">
+	 	<!-- 进入遗失申请查询页面 -->
+		<action name="invoiceLoser" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="invoiceLoser">
+			<result name="success">/pages/newInvoice/jsp/LostApplyQuery.jsp</result>
+	    </action>
+	    <!-- 进入遗失申请新增页面 -->
+		<action name="invoiceAddLostApply" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="invoiceAddLostApply">
+			<result name="success">/pages/newInvoice/jsp/LostApplyEdit.jsp</result>
+		</action>
+		
+		<action name="saveInvoiceLostApply" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="saveInvoiceLostApply">
+			<result name="success">/pages/newInvoice/jsp/LostApplyQuery.jsp</result>
+			<result name="fail">/pages/newInvoice/jsp/LostApplyEdit.jsp</result>
+		</action>
+		<!-- 进入遗失审批页面 -->
+		<action name="initLostApproveQuery" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction"
+			method="initLostApproveQuery">
+			<result name="success">/pages/newInvoice/jsp/LostApproveQuery.jsp</result>
+		</action>
+		
+		<!-- 查看遗失申请 -->
+		<action name="viewLostApply" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="viewLostApply">
+			<result name="view">/pages/newInvoice/jsp/LostApplyView.jsp</result>
+			<result name="modify">/pages/newInvoice/jsp/LostApplyEdit.jsp</result>
+			<result name="approveView">/pages/newInvoice/jsp/LostApprove.jsp</result>
+			<result name="approve">/pages/newInvoice/jsp/LostApprove.jsp</result>
+		</action>
+	</package> 
+	
+	<package name="newinvoiceJson" extends="json-default" namespace="/newinvoiceJson"> 
+	<!--遗失审批 -->
+		<action name="executeApprove" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="executeApprove">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="queryLostApply" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="queryLostApply">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="submitLostApply" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="submitLostApply">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="queryLostApprove" class="com.tapi.tcs.vc.newInvoice.web.QueryInvoiceInfoAction" method="queryLostApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+	</package>
+	<!-- 发票缴销申请 -->
+	<package name="newDestroy" extends="struts-default" namespace="/newDestroy">
+		
+		<action name="initDestroyQuery" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="initDestroyQuery">
+			<result name="success">/pages/newInvoice/jsp/CancellationQuery.jsp</result>
+		</action>
+		
+		<!-- 进入缴销添加页面 -->
+		<action name="initDestroyAdd" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="initDestroyAdd">
+			<result name="success">/pages/newInvoice/jsp/CancellationEdit.jsp</result>
+		</action>
+		<!--保存/更新缴销申请 -->
+		<action name="saveDestroy" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="saveDestroy">
+			<result name="success">/pages/newInvoice/jsp/CancellationQuery.jsp</result>
+			<result name="fail">/pages/newInvoice/jsp/CancellationEdit.jsp</result>
+		</action>
+		
+		<!-- 进入缴销编辑页面 -->
+		<action name="initDestroyEdit" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="initDestroyEdit">
+			<result name="modify">/pages/newInvoice/jsp/CancellationEdit.jsp</result>
+			<result name="view">/pages/newInvoice/jsp/CancellationApprove.jsp</result>
+		</action>
+		<!-- 进入缴销审批查询页面 -->
+		<action name="initDestroyApproveQuery" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction"
+			method="initDestroyApproveQuery">
+			<result name="success">/pages/newInvoice/jsp/CancellationApproveQuery.jsp</result>
+		</action>
+		<!-- 进入缴销审批页面 -->
+		<action name="initDestroyApprove" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="initDestroyApprove">
+			<result name="success">/pages/newInvoice/jsp/CancellationApprove.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="newDestroyJson" extends="json-default" namespace="/newDestroyJson">
+	    <action name="queryDestroy" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="queryDestroy">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!--提交缴销申请 -->
+		<action name="submitDestroy" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="submitDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!--查询缴销审批 -->
+		<action name="queryDestroyApprove" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction"
+			method="queryDestroyApprove">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!--缴销审批 -->
+		<action name="approveDestroy" class="com.tapi.tcs.vc.newInvoice.web.NewDestroyAction" method="approveDestroy">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>
+
+
+

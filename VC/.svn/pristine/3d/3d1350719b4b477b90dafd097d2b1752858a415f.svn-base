@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="baseinfo" extends="struts-default" namespace="/baseinfo">
+
+
+		<!-- 单证种类维护  wanghuajian-->
+		<action name="docTypeMain" class="docTypeAction" method="initQueryDocType">
+			<result name="initQueryDocType">/pages/baseinfo/jsp/DocTypeList.jsp</result>
+		</action>
+		<action name="initAddDocType" class="docTypeAction" method="initAddDocType">
+			<result name="initAddDocType">/pages/baseinfo/jsp/DocTypeEdit.jsp</result>
+		</action>
+		<!--
+			<action name="saveDocType" class="docTypeAction"
+			method="saveDocType"> <result
+			name="saveDocType">/pages/baseinfo/jsp/DocTypeList.jsp</result>
+			</action>
+		-->
+		<action name="prepareUpdateDocType" class="docTypeAction"
+			method="prepareUpdateDocType">
+			<result name="prepareUpdateDocType">/pages/baseinfo/jsp/DocTypeEdit.jsp</result>
+		</action>
+		<!--
+			<action name="updateDocType" class="docTypeAction"
+			method="updateDocType"> <result
+			name="updateDocType">/pages/baseinfo/jsp/DocTypeList.jsp</result>
+			</action>
+		-->
+		<action name="viewDocType" class="docTypeAction" method="viewDocType">
+			<result name="viewDocType">/pages/baseinfo/jsp/DocTypeView.jsp</result>
+		</action>
+		<!--
+			<action name="deleteOrUndeleteDocType" class="docTypeAction"
+			method="deleteOrUndeleteDocType"> <result
+			name="success">/pages/baseinfo/jsp/DocTypeList.jsp</result> </action>
+		-->
+
+		<!-- 印刷厂维护  wanghuajian-->
+		<action name="printeryMain" class="printeryAction" method="initQueryPrintery">
+			<result name="initQueryPrintery">/pages/baseinfo/jsp/PrinteryList.jsp</result>
+		</action>
+		<action name="initAddPrintery" class="printeryAction" method="initAddPrintery">
+			<result name="initAddPrintery">/pages/baseinfo/jsp/PrinteryEdit.jsp</result>
+		</action>
+		<action name="savePrintery" class="printeryAction" method="savePrintery">
+			<result name="success">/pages/baseinfo/jsp/PrinteryList.jsp</result>
+			<result name="fail">/pages/baseinfo/jsp/PrinteryEdit.jsp</result>
+		</action>
+
+		<action name="prepareUpdatePrintery" class="printeryAction"
+			method="prepareUpdatePrintery">
+			<result name="prepareUpdatePrintery">/pages/baseinfo/jsp/PrinteryEdit.jsp</result>
+		</action>
+		<action name="updatePrintery" class="printeryAction" method="updatePrintery">
+			<result name="success">/pages/baseinfo/jsp/PrinteryList.jsp</result>
+			<result name="fail">/pages/baseinfo/jsp/PrinteryEdit.jsp</result>
+		</action>
+
+		<action name="viewPrintery" class="printeryAction" method="viewPrintery">
+			<result name="viewPrintery">/pages/baseinfo/jsp/PrinteryView.jsp</result>
+		</action>
+		<!--
+			<action name="deleteOrUnDeletePrintery" class="printeryAction"
+			method="deleteOrUnDeletePrintery"> <result
+			name="success">/pages/baseinfo/jsp/PrinteryList.jsp</result>
+			</action>
+		-->
+
+		<!-- 单证版本  wanghuajian-->
+		<action name="docVersionInfoMain" class="docVersionInfoAction"
+			method="initQueryVcDocVersionInfo">
+			<result name="initQueryVcDocVersionInfo">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+		</action>
+		<action name="initAddVcDocVersionInfo" class="docVersionInfoAction"
+			method="initAddVcDocVersionInfo">
+			<result name="initAddVcDocVersionInfo">/pages/baseinfo/jsp/DocVersionInfoEdit.jsp</result>
+		</action>
+		<action name="saveVcDocVersionInfo" class="docVersionInfoAction" method="saveVcDocVersionInfo">
+			 <result name="success">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+			 <result name="fail">/pages/baseinfo/jsp/DocVersionInfoEdit.jsp</result>
+		</action>		
+		<action name="prepareUpdateVcDocVersionInfo" class="docVersionInfoAction"
+			method="prepareUpdateVcDocVersionInfo">
+			<result name="prepareUpdateVcDocVersionInfo">/pages/baseinfo/jsp/DocVersionInfoEdit.jsp</result>
+		</action>		
+		<action name="updateVcDocVersionInfo" class="docVersionInfoAction" method="updateVcDocVersionInfo">
+		   <result name="success">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+		   <result name="fail">/pages/baseinfo/jsp/DocVersionInfoEdit.jsp</result>
+		</action>		
+		<action name="viewVcDocVersionInfo" class="docVersionInfoAction"
+			method="viewVcDocVersionInfo">
+			<result name="viewVcDocVersionInfo">/pages/baseinfo/jsp/DocVersionInfoView.jsp</result>
+		</action>
+		<action name="deleteVcDocVersionInfo" class="docVersionInfoAction"
+			method="deleteVcDocVersionInfo">
+			<result name="deleteVcDocVersionInfo">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+		</action>
+		<action name="initRelInsuKind" class="docVersionInfoAction"
+			method="initRelInsuKind">
+			<result name="initRelInsuKind">/pages/baseinfo/jsp/DocVersionInfoInsuKindSelect.jsp</result>
+		</action>
+		<!--
+			<action name="saveRelInsuKind" class="docVersionInfoAction"
+			method="saveRelInsuKind"> <result
+			name="saveRelInsuKind">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+			</action>
+		-->
+		<action name="initRelArea" class="docVersionInfoAction" method="initRelArea">
+			<result name="initRelArea">/pages/baseinfo/jsp/DocVersionInfoAreaSelect.jsp</result>
+		</action>
+		<!--
+			<action name="saveRelArea" class="docVersionInfoAction"
+			method="saveRelArea"> <result
+			name="saveRelArea">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+			</action> <action name="updateVcDocVersionInfoStatus"
+			class="docVersionInfoAction" method="updateVcDocVersionInfoStatus">
+			<result
+			name="updateVcDocVersionInfoStatus">/pages/baseinfo/jsp/DocVersionInfoList.jsp</result>
+			</action>
+		--><!-- begin单证险类险种 -->
+		<action name="viewNewInsuType" class="insuTypeAction" method="viewNew">
+			<result name="success">/pages/baseinfo/jsp/InsuTypeEdit.jsp</result>
+		</action>
+
+		<action name="viewQueryInsuType" class="insuTypeAction" method="viewQuery">
+			<result name="success">/pages/baseinfo/jsp/InsuTypeQuery.jsp</result>
+		</action>
+
+		<action name="viewEditInsuType" class="insuTypeAction" method="viewEdit">
+			<result name="success">/pages/baseinfo/jsp/InsuTypeEdit.jsp</result>
+		</action>
+
+		<action name="viewEditInsuKind" class="insuKindAction" method="viewEdit">
+			<result name="success">/pages/baseinfo/jsp/InsuKindEdit.jsp</result>
+		</action>
+
+		<action name="viewQueryInsuKind" class="insuKindAction" method="viewQuery">
+			<result name="success">/pages/baseinfo/jsp/InsuKindQuery.jsp</result>
+		</action>
+		<!-- end -->
+
+
+		<!-- 通用代码维护  wanghuajian-->
+		<action name="initQueryVcPubCodeType" class="pubCodeManagerAction"
+			method="initQueryVcPubCodeType">
+			<result name="initQueryVcPubCodeType">/pages/baseinfo/jsp/PubCodeTypeList.jsp</result>
+		</action>
+		<action name="initAddVcPubCodeType" class="pubCodeManagerAction"
+			method="initAddVcPubCodeType">
+			<result name="initAddVcPubCodeType">/pages/baseinfo/jsp/PubCodeTypeEdit.jsp</result>
+		</action>
+		<!--
+			<action name="saveVcPubCodeType" class="pubCodeManagerAction"
+			method="saveVcPubCodeType"> <result
+			name="success">/pages/baseinfo/jsp/PubCodeTypeList.jsp</result>
+			</action>
+		-->
+		<action name="prepareUpdateVcPubCodeType" class="pubCodeManagerAction"
+			method="prepareUpdateVcPubCodeType">
+			<result name="prepareUpdateVcPubCodeType">/pages/baseinfo/jsp/PubCodeTypeEdit.jsp</result>
+		</action>
+		<!--
+			<action name="updateVcPubCodeType" class="pubCodeManagerAction"
+			method="updateVcPubCodeType"> <result
+			name="success">/pages/baseinfo/jsp/PubCodeTypeList.jsp</result>
+			</action>
+		-->
+		<action name="viewVcPubCodeType" class="pubCodeManagerAction"
+			method="viewVcPubCodeType">
+			<result name="viewVcPubCodeType">/pages/baseinfo/jsp/PubCodeTypeView.jsp</result>
+		</action>
+		<!--
+			<action name="deleteOrUnDeleteVcPubCodeTypes"
+			class="pubCodeManagerAction" method="deleteOrUnDeleteVcPubCodeTypes">
+			<result
+			name="deleteOrUnDeleteVcPubCodeTypes">/pages/baseinfo/jsp/PubCodeTypeList.jsp</result>
+			</action>
+		-->
+
+
+		<!-- 单证管理控制规则  wanghuajian-->
+		<action name="initQueryDoc" class="docMngRuleAction" method="initQueryDoc">
+			<result name="initQueryDoc">/pages/baseinfo/jsp/DocMngRule.jsp</result>
+		</action>
+		
+
+		<!-- 机构树  -->
+		<action name="initQueryOrgTree" class="vcLevelAction" method="initQueryOrgTree">
+			<result name="success">/pages/inquiry/jsp/CompanyTree.jsp</result>
+		</action>
+		
+		<!-- 单证类型自定义jsp  -->
+		<action name="initdocVerForSelector" class="docVersionInfoAction"
+			method="initdocVerForSelector">
+			<result name="success">/pages/baseinfo/jsp/DocVerSelector.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="baseinfoJson" extends="json-default" namespace="/baseinfoJson">
+	  <!-- 单证管理控制规则  wanghuajian-->
+	   <action name="saveDocMngRuleList" class="docMngRuleAction"
+			method="saveDocMngRuleList">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+			<!--<result name="saveDocMngRuleList">/pages/baseinfo/jsp/DocMngRule.jsp</result>
+		-->
+		</action>
+		
+		<!-- 单证种类维护  wanghuajian-->
+		<action name="saveDocType" class="docTypeAction" method="saveDocType">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="updateDocType" class="docTypeAction" method="updateDocType">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="deleteOrUndeleteDocType" class="docTypeAction"
+			method="deleteOrUndeleteDocType">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+
+		<!-- 印刷厂维护  wanghuajian-->		
+		<action name="deleteOrUnDeletePrintery" class="printeryAction"
+			method="deleteOrUnDeletePrintery">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<!-- 单证版本  wanghuajian-->		
+		<action name="saveRelInsuKind" class="docVersionInfoAction"
+			method="saveRelInsuKind">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="saveRelArea" class="docVersionInfoAction" method="saveRelArea">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="updateVcDocVersionInfoStatus" class="docVersionInfoAction"
+			method="updateVcDocVersionInfoStatus">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<!--查询已关联险种  -->
+		<action name="queryHaveRelInsuKind" class="docVersionInfoAction"
+			method="queryHaveRelInsuKind">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!--查询未关联险种  -->
+		<action name="queryAllNoRelInsuKind" class="docVersionInfoAction"
+			method="queryAllNoRelInsuKind">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!--根据险类查询险种  -->
+		<action name="queryRelInsuKindByInsuType" class="docVersionInfoAction"
+			method="queryRelInsuKindByInsuType">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<!--查询关联地区树ZTree  -->
+		<action name="queryRelAreaZTree" class="docVersionInfoAction"
+			method="queryRelAreaZTree">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!-- 通用代码维护  wanghuajian-->
+		<action name="saveVcPubCodeType" class="pubCodeManagerAction"
+			method="saveVcPubCodeType">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="updateVcPubCodeType" class="pubCodeManagerAction"
+			method="updateVcPubCodeType">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="deleteOrUnDeleteVcPubCodeTypes" class="pubCodeManagerAction"
+			method="deleteOrUnDeleteVcPubCodeTypes">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		
+		<action name="getPubCode" class="pubCodeManagerAction"
+			method="getPubCode">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>		
+
+		<!-- 单证管理控制规则查看 -->
+		<action name="queryDocByPages" class="docMngRuleAction" method="queryDocByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证管理控制规则设置list查询 -->
+		<action name="queryListAndSetDefaultConfig" class="docMngRuleAction"
+			method="queryListAndSetDefaultConfig">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证管理控制规则根据配置机构或人员level查询最大库存时间及库存量 -->
+		<action name="getMngDefaultDate" class="docMngRuleAction"
+			method="getMngDefaultDate">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证管理控制规则设置list查询,用于多行输入与   -->
+		<action name="queryMngDefaultListForMulLine" class="docMngRuleAction"
+			method="queryListAndSetDefaultConfig">
+			<result type="json">
+				<param name="root">vcDocMngRuleShowVoList</param>
+			</result>
+		</action>
+
+		<!-- 单证种类 -->
+		<action name="queryDocTypeByPages" class="docTypeAction"
+			method="queryDocTypeByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 印刷厂 -->
+		<action name="queryPrinteryByPages" class="printeryAction"
+			method="queryPrinteryByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证版本 -->
+		<action name="queryVcDocVersionInfoByPages" class="docVersionInfoAction"
+			method="queryVcDocVersionInfoByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<!-- 单证类型查询 【单证明细查询用】 -->
+		<action name="queryDocForDocDetInquiry" class="docVersionInfoAction"
+			method="queryDocForDocDetInquiry">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证明细查询详细信息 【单证明细查询用】 -->
+		<action name="queryDocDetDocDetInquiry" class="docVersionInfoAction"
+			method="queryDocDetDocDetInquiry">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!-- 通用代码维护  wanghuajian -->
+		<action name="queryVcPubCodeTypeByPages" class="pubCodeManagerAction"
+			method="queryVcPubCodeTypeByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<!-- 下拉框ajax -->
+		<action name="initDownList" class="pubCodeManagerAction"
+			method="initDownList">
+			<result type="json">
+				<param name="root">vcPubCodeTypeList</param>
+			</result>
+		</action>
+
+		<!-- 单证险类险种 -->
+		<action name="saveInsuType" class="insuTypeAction" method="saveInsuType">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="deleteInsuTypeList" class="insuTypeAction"
+			method="deleteInsuTypeList">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="queryInsuTypeListByPages" class="insuTypeAction"
+			method="queryInsuTypeListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="saveInsuKind" class="insuKindAction" method="saveInsuKind">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="queryInsuKindListByPages" class="insuKindAction"
+			method="queryInsuKindListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+
+		<action name="deleteInsuKindList" class="insuKindAction"
+			method="deleteInsuKindList">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="getJSONInsuTypeList" class="insuKindAction"
+			method="queryJSONInsuTypeList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<action name="initInsuKindListWithCondition" class="insuKindAction"
+			method="initInsuKindListWithCondition">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<action name="getJSONInsuKindList" class="insuKindAction"
+			method="queryJSONInsuKindList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<!--单证种类下拉列表查询 -->
+		<action name="getJSONDocTypeList" class="docTypeAction" method="queryJSONDocTypeList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+
+		<!--单证种类下拉列表查询 单证/发票 -->
+		<action name="initDocTypeListWithCondition" class="docTypeAction"
+			method="initDocTypeListWithCondition">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<!--单证类型下拉列表查询 -->
+		<action name="getJSONDocVersionInfoList" class="docVersionInfoAction"
+			method="queryJSONDocVersionInfoList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!--单证类型下拉列表查询    使用人单证发放-->
+		<action name="getJSONUserSend" class="docVersionInfoAction"
+			method="getJSONUserSend">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<!-- 单证类型代码自动完成  -->
+		<action name="queryVcDocVerLabels" class="docVersionInfoAction"
+			method="queryVcDocVerLabels">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		<!-- 单证类型代码自动完成   -->
+		<action name="autoGetVcDocVerLabels" class="docVersionInfoAction"
+			method="autoGetVcDocVerLabels">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		
+		<!--单证类型下拉列表查询  条件-->
+		<action name="initDocVerListWithCondition" class="docVersionInfoAction"
+			method="initDocVerListWithCondition">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<!-- 单证类型代码自动完成 发票  -->
+		<action name="queryInvoiceLabels" class="docVersionInfoAction"
+			method="queryInvoiceLabels">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		<!-- 单证类型代码自动完成 【进行征订的单证类型】  -->
+		<action name="queryOrderDocDropDownList" class="docVersionInfoAction"
+			method="queryOrderDocDropDownList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 单证类型代码自动完成 业务类  -->
+		<action name="queryBizDocDropDownList" class="docVersionInfoAction"
+			method="queryBizDocDropDownList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 单证类型代码下拉组件  发票  -->
+		<action name="queryInvoiceDropDownList" class="docVersionInfoAction"
+			method="queryInvoiceDropDownList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 印刷厂代码下拉组件  -->
+		<action name="printeryJsonListWithCondition" class="printeryAction"
+			method="printeryJsonListWithCondition">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+
+		<!-- 获取单证印刷价格 -->
+		<action name="findUnitPrice" class="printeryAction"
+			method="findUnitPrice">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+
+		<!-- 印刷厂单证承印信息Json  -->
+		<action name="queryJsonPrtDocVersionListByPrinteryId" class="printeryAction"
+			method="queryJsonPrtDocVersionListByPrinteryId">
+			<result type="json">
+				<param name="root">printDocVersionList</param>
+			</result>
+		</action>
+
+		<!-- 单证印刷流水号规则Json  -->
+		<action name="queryJsondocPrtNoRuleListByDocId" class="docVersionInfoAction"
+			method="queryJsondocPrtNoRuleListByDocId">
+			<result type="json">
+				<param name="root">docPrtNoRuleList</param>
+			</result>
+		</action>
+
+		<!-- 通用代码Json  -->
+		<action name="queryJsonVcPubCodeListByTypeId" class="pubCodeManagerAction"
+			method="queryJsonVcPubCodeListByTypeId">
+			<result type="json">
+				<param name="root">vcPubCodeList</param>
+			</result>
+		</action>
+		
+		<!-- 使用人 Json  -->
+		<action name="getTakerJson" class="vcTakerAction"
+			method="getTakerJson">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 查询团队自动完成 -->
+		<action name="queryTeamListJson" class="vcTakerAction"
+			method="queryTeamListJson">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 查询人员自动完成 -->
+		<action name="queryUserListJson" class="vcTakerAction"
+			method="queryUserListJson">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 渠道类型自动完成 -->
+		<action name="queryChannelDetailCode" class="vcTakerAction"
+			method="queryChannelDetailCode">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 渠道类型自动完成 -->
+		<action name="querySaleOrgCodeList" class="vcTakerAction"
+			method="querySaleOrgCodeList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 中介协议列表自动完成 -->
+		<action name="queryAgreementNoList" class="vcTakerAction"
+			method="queryAgreementNoList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 查询协议对象信息 -->
+		<action name="queryAgreementDto" class="vcTakerAction"
+			method="queryAgreementDto">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="findUserDetailJson" class="vcTakerAction"
+			method="findUserDetailJson">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="getJsonVcTaker" class="vcTakerAction"
+			method="queryJsonVcTaker">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		<!-- 获取使用人所在机构代码 -->
+		<action name="findOrgCodeJson" class="vcTakerAction"
+			method="findOrgCodeJson">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<!-- 印刷厂下拉框  -->
+		<action name="getJSONPrinteryList" class="printeryAction"
+			method="getJSONPrinteryList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		
+		
+		<!-- 单证类型自定义jsp查询  -->
+		<action name="queryDocVerForSelector" class="docVersionInfoAction"
+			method="queryDocVerForSelector">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		
+	</package>
+	<!-- end -->
+	
+	<package name="vclevel" extends="struts-default" namespace="/vclevel">
+		<!-- 
+		<action name="preLevelSet" class="vcLevelAction" method="preLevelSet">
+			<result name="success">/pages/baseinfo/jsp/VcLevelSet.jsp</result>
+		</action>
+		 -->
+		<action name="preLevelSet" class="vcLevelAction" method="initQueryOrgTree">
+			<result name="success">/pages/baseinfo/jsp/VcLevelSet1.jsp</result>
+		</action>
+		<action name="beforeCompanyUpdate" class="vcLevelAction" method="beforeLevelSetUpdate">
+			<result name="success">/pages/baseinfo/jsp/CompanyEdit.jsp</result>
+		</action>
+		<action name="beforeRoleUpdate" class="vcLevelAction" method="beforeLevelSetUpdate">
+			<result name="success">/pages/baseinfo/jsp/RoleEdit.jsp</result>
+		</action>
+		<action name="beforeAgencyOrgUpdate" class="vcLevelAction" method="beforeAgencyOrgUpdate">
+			<result name="success">/pages/baseinfo/jsp/AgencyEdit.jsp</result>
+		</action>
+		<action name="beforeVcTakerUpdate" class="vcLevelAction" method="beforeVcTakerUpdate">
+			<result name="success">/pages/baseinfo/jsp/TakerEdit.jsp</result>
+		</action>
+		<action name="deleteLevelSet" class="vcLevelAction" method="deleteLevelSet">
+			<result name="success">/pages/baseinfo/jsp/VcLevelSet1.jsp</result>
+		</action>
+		<action name="deleteVcAgencyOrg" class="vcLevelAction" method="deleteVcAgencyOrg">
+			<result name="success">/pages/baseinfo/jsp/VcLevelSet1.jsp</result>
+		</action>
+		<action name="deleteVcTaker" class="vcLevelAction" method="deleteVcTaker">
+			<result name="success">/pages/baseinfo/jsp/VcLevelSet1.jsp</result>
+		</action>		
+		<!-- 用户选择 -->
+		<action name="initUsersForSelector" class="vcLevelAction" method="initUsersForSelector">
+			<result name="success">/pages/baseinfo/jsp/UserSelector.jsp</result>
+		</action>
+		<!-- 进入岗位人员机构变更 页-->
+		<action name="initRoleOrgChange" class="vcLevelAction" method="initRoleOrgChange">
+			<result name="success">/pages/baseinfo/jsp/RoleOrgChange.jsp</result>
+		</action>
+		<!-- 进入单证使用人机构变更 页-->
+		<action name="initTakerOrgChange" class="vcLevelAction" method="initTakerOrgChange">
+			<result name="success">/pages/baseinfo/jsp/TakerOrgChange.jsp</result>
+		</action>
+	</package>
+
+	<package name="vclevelJson" extends="json-default" namespace="/vclevelJson">
+	    <!-- zTree机构树Json  -->
+	   <action name="initQueryOrgZTree" class="vcLevelAction" method="initQueryOrgZTree">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+	    <!-- 机构树Json  -->
+		<action name="queryOrgTreeList" class="vcLevelAction" method="queryOrgTreeList">
+			<result type="json">
+				<param name="root">treeList</param>
+			</result>
+		</action>
+		
+		<action name="queryLevelSet" class="vcLevelAction" method="queryLevelSet">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="queryAgencyOrg" class="vcLevelAction" method="queryAgencyOrg">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="queryTaker" class="vcLevelAction" method="queryTaker">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="saveCompany" class="vcLevelAction" method="saveCompany">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+		<action name="saveRole" class="vcLevelAction" method="saveRole">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+		<action name="saveAgencyOrg" class="vcLevelAction" method="saveAgencyOrg">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+		<action name="saveVcTaker" class="vcLevelAction" method="saveVcTaker">
+			<result type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+		<action name="checkChildCompany" class="vcLevelAction" method="checkChildCompany">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+		<!-- 用户选择 -->
+		<action name="queryUsersForSelector" class="vcLevelAction" method="queryUsersForSelector">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="getJSONCompanyList" class="vcLevelAction" method="queryJSONCompanyList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONUserList" class="vcLevelAction" method="queryJSONUserList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONBusiness" class="vcLevelAction" method="queryJSONBusiness">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONBusinessDetail" class="vcLevelAction" method="queryJSONBusinessDetail">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONCodeList" class="vcLevelAction" method="queryJSONCodeList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONAgencyOrgList" class="vcLevelAction" method="queryJSONAgencyOrgList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<action name="getJSONTakerList" class="vcLevelAction" method="queryJSONTakerList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<!--岗位人员。单证使用人变更机构 -->
+		<action name="checkBeforeChangeOrg" class="vcLevelAction" method="checkBeforeChangeOrg">
+			<result type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+		<!-- 岗位人员机构变更 -->
+		<action name="roleOrgChange" class="vcLevelAction" method="roleOrgChange">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+		<!-- 单证使用人机构变更 -->
+		<action name="takerOrgChange" class="vcLevelAction" method="takerOrgChange">
+			<result type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

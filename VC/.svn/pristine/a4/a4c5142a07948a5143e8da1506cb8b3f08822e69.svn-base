@@ -1,0 +1,120 @@
+package com.tapi.tcs.vc.oauth.web;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+
+import com.alibaba.fastjson.JSON;
+import com.tapi.tcs.vc.common.web.BaseAction;
+import com.tapi.tcs.vc.oauth.service.OAuthService;
+import com.tapi.tcs.vc.oauth.vo.OAuthCompany;
+import com.tapi.tcs.vc.oauth.vo.OAuthResponse;
+import com.tapi.tcs.vc.oauth.vo.OAuthRole;
+import com.tapi.tcs.vc.oauth.vo.OAuthUserRole;
+
+
+/**
+ * 提供服务接口
+ * @author Administrator
+ *
+ */
+
+public class OAuthAction extends BaseAction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3999593538244577804L;
+	protected final Logger logger = Logger.getLogger(getClass());
+
+	private OAuthService oAuthService;
+	/**
+	 * 角色管理
+	 */
+	public void roleManage() {
+		logger.info("访问/services/oauth/role角色管理 ...");
+		OAuthResponse response = new OAuthResponse();
+		
+		try {
+			HttpServletRequest request = getRequest();
+			String postData = null;
+			postData = getRequestPostData(request);
+			logger.info("请求报文：" + postData);
+			OAuthRole oAuthRole = JSON.parseObject(postData, OAuthRole.class);
+			oAuthService.saveRole(oAuthRole);
+		} catch (Exception e) {
+			logger.error("统一授权角色管理出错："+e);
+			response.setCode("N");
+			response.setMessage(e.getMessage());
+		}
+		if (response.getCode() == null) {
+			response.setCode("Y");
+			response.setMessage("操作成功");
+			logger.info("统一授权角色管理操作成功...");
+		}
+		this.renderJson(getResponse(), response);
+	}
+	/**
+	 * 用户角色管理
+	 */
+	public void userRoleManage() {
+		logger.info("访问/services/oauth/userRole用户角色管理 ...");
+		OAuthResponse response = new OAuthResponse();
+		
+		try {
+			HttpServletRequest request = getRequest();
+			String postData = null;
+			postData = getRequestPostData(request);
+			logger.info("请求报文：" + postData);
+			OAuthUserRole userRole = JSON.parseObject(postData, OAuthUserRole.class);
+			oAuthService.saveUserRole(userRole);
+		} catch (Exception e) {
+			logger.error("统一授权用户角色管理出错："+e);
+			response.setCode("N");
+			response.setMessage(e.getMessage());
+		}
+		if (response.getCode() == null) {
+			response.setCode("Y");
+			response.setMessage("操作成功");
+			logger.info("统一授权用户角色管理操作成功...");
+		}
+		this.renderJson(getResponse(), response);
+	}
+	/**
+	 * 从发布订阅系统订阅机构数据
+	 */
+	public void companySync() {
+		logger.info("访问/services/company从发布订阅系统订阅机构数据 ...");
+		OAuthResponse response = new OAuthResponse();
+		
+		try {
+			HttpServletRequest request = getRequest();
+			String postData = getRequestPostData(request);
+			logger.info("请求报文：" + postData);
+			OAuthCompany company = JSON.parseObject(postData, OAuthCompany.class);
+			oAuthService.saveCompany(company);
+		} catch (Exception e) {
+			logger.error("从发布订阅系统订阅机构数据出错："+e);
+			response.setCode("N");
+			response.setMessage(e.getMessage());
+		}
+		if (response.getCode() == null) {
+			response.setCode("Y");
+			response.setMessage("操作成功");
+			logger.info("从发布订阅系统订阅机构数据操作成功...");
+		}
+		this.renderJson(getResponse(), response);
+	}
+	
+	
+	
+	public OAuthService getoAuthService() {
+		return oAuthService;
+	}
+	public void setoAuthService(OAuthService oAuthService) {
+		this.oAuthService = oAuthService;
+	}
+
+
+
+	
+}

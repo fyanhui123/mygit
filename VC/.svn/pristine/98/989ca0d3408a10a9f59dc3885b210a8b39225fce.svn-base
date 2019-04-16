@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 定时任务处理类 -->
+	<bean id="dataProcess" class="com.tapi.tcs.vc.invoice.util.ProcessData">
+		<property name="fuJianInvoiceService">
+			<ref bean="fuJianInvoiceService"/>
+		</property>
+	</bean>
+	
+	<bean id="fjInvoiceSendToPlat"    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject">
+			<ref bean="dataProcess" />
+		</property>
+		<property name="targetMethod">
+			<value>fjInvoiceSendToPlat</value>
+		</property>
+	</bean>
+		
+	<!-- <bean id="fjInvoiceSendToPlatTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="fjInvoiceSendToPlat"/>
+			<property name="cronExpression">
+			<value>${invoice.FjUpload.timer}</value>
+		</property>
+	</bean> -->
+	
+	<!-- 贵州地税发票上传定时任务 -->
+	<bean id="gzInvoiceTaxUpload"    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject">
+			<ref bean="vcInvoiceTaxUploadProxyService" />
+		</property>
+		<property name="targetMethod">
+			<value>uploadInvoiceTaxSchedule</value>
+		</property>
+	</bean>
+	<!-- <bean id="gzInvoiceTaxUploadTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="gzInvoiceTaxUpload"/>
+			<property name="cronExpression">
+			<value>${invoice.tax.timer}</value>
+		</property>
+	</bean> -->
+	
+	
+	
+	<!-- 重庆发票定时上传任务 -->
+	<bean id="cqInvoiceExportFile"    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject">
+			<ref bean="chongQingInvoiceService" />
+		</property>
+		<property name="targetMethod">
+			<value>InvoiceExportAutoTask</value>
+		</property>
+	</bean>
+	<!-- <bean id="cqInvoiceExportTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="cqInvoiceExportFile"/>
+			<property name="cronExpression">
+			<value>${invoice.chongQingUpload.timer}</value>
+		</property>
+	</bean> -->
+	
+	<!-- 定时导入银保通流水号对账文件任务 -->
+	<bean id="importBisDocNumFile"    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject">
+			<ref bean="docNumAccountService" />
+		</property>
+		<property name="targetMethod">
+			<value>executeImportBisFileClocked</value>
+		</property>
+	</bean>
+	<bean id="importBisDocNumFileTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="importBisDocNumFile"/>
+			<property name="cronExpression">
+			<value>${account.importBisDocNumFile.importTimer}</value>
+		</property>
+	</bean>
+	
+	<!-- 银保通流水号对账定时任务 -->
+	<bean id="executeBisDocNumAcct"  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject">
+			<ref bean="docNumAccountService" />
+		</property>
+		<property name="targetMethod">
+			<value>executeBisAcct</value>
+		</property>
+	</bean>
+	<bean id="executeBisDocNumAcctTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="executeBisDocNumAcct"/>
+			<property name="cronExpression">
+			<value>${account.importBisDocNumFile.acctountTimer}</value>
+		</property>
+	</bean>
+	
+	<bean id="start_Send" lazy-init="false" autowire="no"  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	     <property name="triggers">
+	         <list>
+	           <!--  <ref bean="fjInvoiceSendToPlatTrigger" />
+	            <ref bean="gzInvoiceTaxUploadTrigger" />
+	            <ref bean="cqInvoiceExportTrigger" /> -->
+	            <ref bean="importBisDocNumFileTrigger" /> 
+	            <ref bean="executeBisDocNumAcctTrigger" /> 
+	         </list>
+	     </property>
+	</bean>
+		
+</beans>

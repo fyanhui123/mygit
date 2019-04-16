@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+    <!-- 印刷入库查询统计 -->	  
+    <bean id="findDocTakerIoService"
+		class="com.tapi.tcs.vc.doctakeio.service.impl.FindDocTakerIoServiceImpl" >  
+		<property name="findDocTakioDao" ref="findDocTakioDao" />	
+	</bean> 
+</beans>
+
+

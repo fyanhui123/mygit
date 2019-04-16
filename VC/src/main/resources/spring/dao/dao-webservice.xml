@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- 基础代码处理公用方法DAO -->
+	<bean id="vcBaseInfoDao" class="com.tapi.tcs.vc.webservice.provider.common.dao.impl.VcBaseInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />		
+	</bean>
+	
+	<!-- 单证状态查询公用方法DAO -->
+	<bean id="vcDocStatusDao" class="com.tapi.tcs.vc.webservice.provider.common.dao.impl.VcDocStatusDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />		
+	</bean>
+	
+	<!-- 单证报文记录DAO-->
+	<bean id="vcReportDao" class="com.tapi.tcs.vc.webservice.provider.common.dao.impl.VcReportDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />		
+	</bean>
+	
+	<!-- 单证类型查询接口的DAO -->
+	<bean id="vcDocVerInfoDao" class="com.tapi.tcs.vc.webservice.provider.docVerInquiryOld.dao.impl.VcDocVerInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />		
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>
+	
+	<!-- 核销接口的DAO -->
+	<bean id="docExecuteUsedDao" class="com.tapi.tcs.vc.webservice.provider.docDoUsedOld.dao.impl.DocExecuteUsedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />		
+	</bean>
+	
+		<!--接口   单证号段查询     -->
+	<bean id="docNumQueryDao"  class="com.tapi.tcs.vc.webservice.provider.docNumInquiryOld.dao.impl.DocNumQueryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!--接口   单证流水号状态查询    -->
+	<bean id="docNumStatusInquiryDao"  class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiryOld.dao.impl.DocNumStatusInquiryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!-- 激活卡信息查询接口对应的DAO -->
+	<bean id="vcInsuCardInquiryDao"  class="com.tapi.tcs.vc.webservice.provider.insuCardInfoInquiry.dao.impl.VcInsuCardInquiryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+
+	<!--新核心系统接口   单证类型查询    -->
+	<bean id="docVerInquiryDao"  class="com.tapi.tcs.vc.webservice.provider.docVerInquiry.dao.impl.DocVerInquiryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+
+	<!--新核心系统接口   单证流水号状态查询    -->
+	<bean id="newDocNumStatusInquiryDao"  class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiry.dao.impl.DocNumStatusInquiryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!--新核心系统接口   单证核销查询    -->
+	<bean id="docDoUsedDao"  class="com.tapi.tcs.vc.webservice.provider.docDoUsed.dao.impl.DocDoUsedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!--新核心系统接口   激活卡激活  -->
+	<bean id="insuranceActivatedDao"  class="com.tapi.tcs.vc.webservice.provider.insuranceCardDoActivated.dao.impl.InsuranceActivatedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!--新核心系统接口   单证重打  -->
+	<bean id="docReprintDao"  class="com.tapi.tcs.vc.webservice.provider.docDoReprinted.dao.impl.DocReprintDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!--人身险POS系统接口   可用流水号查询接口  -->
+	<bean id="queryAvailableNumDao"  class="com.tapi.tcs.vc.webservice.provider.docNumInquiry.dao.impl.QueryAvailableNumDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!--人身险POS系统接口(新 对接神州海纳系统)   可用流水号查询接口  -->
+	<bean id="queryAvailableNumNewDao"  class="com.tapi.tcs.vc.webservice.provider.docNumInquiryNew.dao.impl.QueryAvailableNumNewDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!--单证类型同步接口  -->
+	<bean id="docVerInfoInquiryDao"  class="com.tapi.tcs.vc.webservice.provider.docVerInfoInquiry.dao.impl.DocVerInfoInquiryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 单证冲正接口 -->
+	<bean id="docReversedDao"  class="com.tapi.tcs.vc.webservice.provider.docDoReversed.dao.impl.DocReversedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 单证撤单冲正接口 -->
+	<bean id="cancelReversedDao"  class="com.tapi.tcs.vc.webservice.provider.cancelDoReversed.dao.impl.CancelReversedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 单证同步（同步发放轨迹表）-->
+	<bean id="queryProvideNumDao"  class="com.tapi.tcs.vc.webservice.provider.docNumSynchronize.dao.impl.QueryProvideNumDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 发票自动入库接口-->
+	<bean id="inputStorageDao"  class="com.tapi.tcs.vc.webservice.provider.inStorage.dao.impl.inputStorageImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 发票自动分发接口-->
+	<bean id="outStorageDao"  class="com.tapi.tcs.vc.webservice.provider.outStorage.dao.impl.OutStorageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 新发票核销接口-->
+	<bean id="doUsedDao"  class="com.tapi.tcs.vc.webservice.provider.newInvoiceDoUsed.dao.NewInvoiceDoUsedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 新发票作废-->
+	<bean id="newInvoiceDocDoAnnuledDao"  class="com.tapi.tcs.vc.webservice.provider.newDocDoAnnuled.dao.NewInvoiceDocDoAnnuledDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 新发票空白作废-->
+	<bean id="cancelInvoiceDaos"  class="com.tapi.tcs.vc.webservice.provider.newCancelInvoice.dao.CancelInvoiceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>

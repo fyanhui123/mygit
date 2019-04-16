@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<bean id="invoiceExportService"
+		class="com.tapi.tcs.vc.invoice.service.impl.InvoiceExportServiceImpl" >
+		<property name="invoiceExportDao" ref="invoiceExportDao"></property>
+	</bean>
+	
+	<!--查询纳税人基本信息,发票领购信息-->
+	<bean id="invoicePurchaseService"  class="com.tapi.tcs.vc.invoice.service.impl.InvoicePurchaseServiceImpl">
+	     <property name="invoicePurchaseDao"  ref="invoicePurchaseDao"></property>
+	     <property name="vcLevelDao"  ref="vcLevelDao"></property>
+	     <property name="takeNoDao"  ref="takeNoDao"></property>
+	</bean>	
+	
+	
+	<bean id="fuJianInvoiceService"
+		class="com.tapi.tcs.vc.invoice.service.impl.FuJianInvoiceServiceImpl" >
+		<property name="jtServicePortType" ref="jtServicePortType"></property>
+		<property name="fuJianInvoiceDao" ref="fuJianInvoiceDao"></property>
+	</bean>
+	
+	<bean id="heilongjiangInvoiceService"
+		class="com.tapi.tcs.vc.invoice.service.impl.HeilongjiangInvoiceServiceImpl" >
+		<property name="heilongjiangInvoiceDao" ref="heilongjiangInvoiceDao"></property>
+	</bean>
+	
+	<!--重庆发票导出 -->
+	<bean id="chongQingInvoiceService"
+		class="com.tapi.tcs.vc.invoice.service.impl.ChongQingInvoiceServiceImpl" >
+		<property name="vcLevelDao" ref="vcLevelDao"></property>
+		<property name="invoiceExportDao" ref="invoiceExportDao"></property>
+	</bean>
+		
+</beans>
+

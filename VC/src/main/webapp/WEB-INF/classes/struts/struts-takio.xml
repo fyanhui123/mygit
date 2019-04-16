@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="takerio" extends="struts-default" namespace="/takerio">
+		<!-- 单证角色清单查询-->
+		<action name="findDocTakerio" class="com.tapi.tcs.vc.doctakeio.web.FindDocTakioAction" method="findDocTakerio">
+			<result name="success">/pages/docTakerIo/jsp/VcDocTakerio.jsp</result>
+		</action>
+	</package>
+	<package name="findVcDocTakerioJson" extends="json-default"
+		namespace="/findVcDocTakerioJson">
+		<action name="findVcDocTakerio" class="com.tapi.tcs.vc.doctakeio.web.FindDocTakioAction"
+			method="findVcDocTakerio">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="exportDocTakerio" class="com.tapi.tcs.vc.doctakeio.web.FindDocTakioAction"
+			method="exportDocTakerio">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+	</package>	
+</struts>
+
+
+

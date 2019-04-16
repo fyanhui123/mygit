@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="subfunc" extends="struts-default"
+		namespace="/subfunc">
+		<action name="viewWidgetsPage" class="contractAction" method="viewListPage">
+			<result name="viewWidgets">/pages/subfunc/jsp/widgets.jsp</result>
+		</action>
+		
+		<action name="viewDtreePage" class="contractAction" method="dtreeDemo">
+			<result name="dtreeDemo">/pages/subfunc/jsp/dtree.jsp</result>
+		</action>
+		
+		<action name="viewListPage" class="contractAction" method="viewContractList">
+			<result name="contractList">/pages/subfunc/jsp/contractPageList.jsp</result>
+		</action>
+		
+		<action name="viewEditPage" class="contractAction" method="viewEditPage">
+			<result name="editPage">/pages/subfunc/jsp/contractEdit.jsp</result>
+		</action>
+		
+		<action name="viewEditTable" class="contractAction" method="viewContractList">
+			<result name="contractList">/pages/subfunc/jsp/mulLine.jsp</result>
+			<result name="viewTreePage">/pages/subfunc/jsp/jsTreeDemo.jsp</result>
+		</action>
+		
+		<action name="savePrinting" class="contractAction"
+			method="savePrinting">
+			<result name="contractList">/pages/subfunc/jsp/contractPageList.jsp</result>
+		</action>
+
+		<action name="editPrinting" class="contractAction"
+			method="editPrinting">
+			<result name="editPrinting">/pages/subfunc/jsp/contractEdit.jsp</result>
+			<result name="contractList">/pages/subfunc/jsp/contractPageList.jsp</result>
+		</action>
+
+		<action name="deletePrinting" class="contractAction"
+			method="deletePrinting">
+			<result name="contractList">/pages/subfunc/jsp/contractPageList.jsp</result>
+		</action>
+		
+		<action name="saveMulLine" class="contractAction" method="saveMulLine">
+			<result name="SUCCESS">/pages/subfunc/jsp/contractPageList.jsp</result>
+		</action>
+		
+	</package>
+
+	<package name="json" extends="json-default">
+		<action name="queryContractsByPages" class="contractAction"
+			method="queryContractsByPages">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="queryBranchList" class="contractAction"
+			method="queryBranchList">
+			<result type="json">
+				<param name="root">treeList</param>
+			</result>
+		</action>
+		
+	</package>
+
+</struts>
+

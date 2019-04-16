@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<!-- 印刷厂 -->	  
+    <bean id="vcPrinteryService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcPrinteryServiceImpl" >  
+		<property name="vcPrinteryDao" ref="vcPrinteryDao" />
+		<property name="vcPrintDocVersionDao" ref="vcPrintDocVersionDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean> 
+	 <!-- 承印信息 -->	  
+    <bean id="vcPrintDocVersionService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcPrintDocVersionServiceImpl" >
+		<property name="vcPrintDocVersionDao" ref="vcPrintDocVersionDao" />
+	</bean>
+	<!-- 单证种类 -->	
+	<bean id="vcDocTypeService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcDocTypeServiceImpl" >
+		<property name="vcDocTypeDao" ref="vcDocTypeDao" />
+		<property name="vcDocVersionInfoDao" ref="vcDocVersionInfoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>
+	<!-- 单证版本 -->	  
+    <bean id="vcDocVersionInfoService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcDocVersionInfoServiceImpl" >  
+		<property name="vcDocVersionInfoDao" ref="vcDocVersionInfoDao" />
+		<property name="vcDocRelInsuKindDao" ref="vcDocRelInsuKindDao" />
+		<property name="vcDocRelAreaDao" ref="vcDocRelAreaDao" />		
+		<property name="orderManagerDao" ref="orderManagerDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="vcPubCodeManagerDao" ref="vcPubCodeManagerDao" />
+	</bean> 
+	
+	<!-- 单证险类 -->	
+	<bean id="insuTypeService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.InsuTypeServiceImpl">
+		<property name="insuTypeDao" ref="insuTypeDao" />
+		<property name="insuKindDao" ref="insuKindDao" />
+	</bean>
+	
+	<!-- 单证险种 -->
+	<bean id="insuKindService" class="com.tapi.tcs.vc.baseinfo.service.impl.InsuKindServiceImpl">
+		<property name="insuKindDao" ref="insuKindDao" />
+		<property name="insuTypeDao" ref="insuTypeDao" />
+	</bean>	
+
+     <!-- 通用代码维护 -->
+     <bean id="pubCodeManagerService" class="com.tapi.tcs.vc.common.service.impl.PubCodeManagerServiceImpl">
+		<property name="vcPubCodeManagerDao" ref="vcPubCodeManagerDao" />		
+	</bean>	
+	
+	<!-- 单证管理控制规则维护 -->	
+	<bean id="vcDocMngRuleService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcDocMngRuleServiceImpl" >
+		<property name="vcDocMngRuleDao" ref="vcDocMngRuleDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="vcConstantConfigDao" ref="vcConstantConfigDao" />
+	</bean>
+	
+	<!-- 机构/用户 -->	
+	<bean id="vcLevelService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcLevelServiceImpl" >
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="vcTakerDao" ref="vcTakerDao" />
+		<property name="vcLevelHisDao" ref="vcLevelHisDao" />
+		<property name="vcTakerHisDao" ref="vcTakerHisDao" />
+	</bean>
+	
+	<!-- 使用人 -->	
+	<bean id="vcTakerService"
+		class="com.tapi.tcs.vc.baseinfo.service.impl.VcTakerServiceImpl" >
+		<property name="vcTakerDao" ref="vcTakerDao" />
+	</bean>
+	
+	<!-- 常量配置 -->
+     <bean id="vcConstantConfigService" class="com.tapi.tcs.vc.baseinfo.service.impl.VcConstantConfigServiceImpl">
+		<property name="vcConstantConfigDao" ref="vcConstantConfigDao" />		
+	</bean>	
+	
+	<!-- 统一授权 -->
+     <bean id="oAuthService" class="com.tapi.tcs.vc.oauth.service.impl.OAuthServiceImpl">
+		<property name="oAuthDao" ref="oAuthDao" />		
+		<property name="vcPubCodeManagerDao" ref="vcPubCodeManagerDao" />	
+	</bean>	
+	     <bean id="vcMenuService" class="com.tapi.tcs.vc.vcmenu.service.impl.VcMenuServiceimpl">
+		<property name="vcMenuDao" ref="vcMenuDao" />	
+		<property name="vcRoleMenuDao" ref="vcRoleMenuDao" />	
+	</bean>	
+</beans>
+
+

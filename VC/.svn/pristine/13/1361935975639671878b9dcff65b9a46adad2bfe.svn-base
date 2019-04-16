@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<import resource="classpath:component-cache.xml" />
+	<import resource="classpath:component-security.xml" />
+	<import resource="classpath:component-mail.xml" />
+	<import resource="classpath:component-sms.xml" />
+	<!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+	<!-- Configurer that replaces ${...} placeholders with values from properties 
+		files -->
+	<!-- (in this case, mail and JDBC related properties) -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/config/jdbc.properties</value>
+				<value>classpath:/config/security.properties</value>
+				<value>classpath:/config/mail.properties</value>
+				<value>classpath:/config/sms.properties</value>
+				<value>classpath:/config/component-security.properties</value>
+				<value>classpath:/config/ws-client.properties</value>
+				<value>classpath:/config/invoice-uploadTax-sql.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- ========================= ASPECT CONFIGURATION ======================== -->
+
+	<!-- This definition creates auto-proxy infrastructure based on the given 
+		pointcut, expressed in AspectJ pointcut language. Here: applying the advice 
+		named "txAdvice" to all methods on classes in service package. -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* com.tapi.tcs.vc..service..*Service*.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* com.tapi.tcs.vc.webservice.provider..service..*Service*.*(..))" />
+	</aop:config>
+
+	<!-- Transaction advice definition, based on method name patterns. Defaults 
+		to PROPAGATION_REQUIRED for all methods whose name starts with "save" or 
+		"update", and to PROPAGATION_REQUIRED with read-only hint for all other methods. -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="nest*" rollback-for="Exception" propagation="REQUIRES_NEW"/>
+			<tx:method name="create*" rollback-for="Exception"/>
+			<tx:method name="update*" rollback-for="Exception"/>
+			<tx:method name="delete*" rollback-for="Exception"/>
+			<tx:method name="execute*" rollback-for="Exception"/>
+			<tx:method name="save*" rollback-for="Exception"/>
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<bean id="logAdvice" class="com.tapi.tcs.tf.base.api.logging.LogAdvice" />
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.tapi.tcs.vc..service.*.*(..))"
+			order="2" advice-ref="logAdvice" />
+	</aop:config>
+
+</beans>

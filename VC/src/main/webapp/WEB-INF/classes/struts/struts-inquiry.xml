@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="inquiry" extends="struts-default"
+	    namespace="/inquiry">
+	   <!-- 进入印刷入库查询统计页面  -->
+	    <action name="initDocInStoreInquiry" class="inquiryManageAction" method="initDocInStoreInquiry">
+			<result name="success">/pages/inquiry/jsp/DocInStoreApplyInquiry.jsp</result>
+		</action>
+		 <!-- 进入单证明细查询统计页面  -->
+	    <action name="initDocDetailInquiry" class="inquiryManageAction" method="initDocDetailInquiry">
+			<result name="success">/pages/inquiry/jsp/DocDetailInquiryNew.jsp</result>
+		</action>
+		<!-- 进入遗失核销查询统计页面  -->
+		<action name="initLostVerificationQuery" class="inquiryManageAction" method="initLostVerificationQuery">
+			<result name="success">/pages/inquiry/jsp/LostVerificationInquiry.jsp</result>
+		</action>
+		
+	</package>
+	
+	
+	<package name="inquiryJson" extends="json-default" namespace="/inquiryJson"> 
+		<!-- 印刷入库查询统计分页查询  -->
+		<action name="queryDocInStoreInquiryListByPages" class="inquiryManageAction"
+			method="queryDocInStoreInquiryListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 单证明细查询统计分页查询  -->
+		<action name="queryDocDetailInquiryListByPages" class="inquiryManageAction"
+			method="queryDocDetailInquiryListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>	
+		<!-- 遗失核销查询统计分页查询  -->
+		<action name="queryLostVerification" class="inquiryManageAction"
+			method="queryLostVerification">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="exportDocDetailInquiry" class="inquiryManageAction"
+			method="exportDocDetailInquiry">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="exportDocInStoreInquiry" class="inquiryManageAction"
+			method="exportDocInStoreInquiry">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="exportLostVerification" class="inquiryManageAction"
+			method="exportLostVerification">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<action name="checkBeforeDetailInquiry" class="inquiryManageAction"
+			method="checkBeforeDetailInquiry">
+			<result type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+	</package>	
+	
+	<package name="applyInquiry" extends="struts-default"
+	    namespace="/applyInquiry">
+		<!-- 进入单证申领查询统计页面  -->
+	    <action name="initApplyInquiry" class="applyInquiryAction" method="initApplyInquiry">
+			<result name="success">/pages/inquiry/jsp/ApplyInquiry.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="applyInquiryJson" extends="json-default" namespace="/applyInquiryJson"> 
+		<!-- 单证申领查询统计分页查询  -->
+		<action name="queryApplyInquiryListByPages" class="applyInquiryAction"
+			method="queryApplyInquiryListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="exportApplyInquiryList" class="applyInquiryAction"
+			method="exportApplyInquiryList">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+	</package>	
+	
+	<package name="storageInquiry" extends="struts-default"
+	    namespace="/storageInquiry">
+		<!-- 进入单证库存查询统计页面  -->
+	    <action name="initStorageInquiry" class="storageInquiryAction" method="initStorageInquiry">
+			<result name="success">/pages/inquiry/jsp/StorageInquiry.jsp</result>
+		</action>
+		<!-- 进入使用人库存查询统计页面  -->
+	    <action name="initAvailableDocInquiry" class="availableDocInquiryAction" method="initAvailableDocInquiry">
+			<result name="success">/pages/inquiry/jsp/AvailableDocInquiry.jsp</result>
+		</action>
+	</package>
+	
+	<package name="storageInquiryJson" extends="json-default" namespace="/storageInquiryJson"> 
+		<!-- 单证库存查询统计分页查询  -->
+		<action name="queryStorageInquiryListByPages" class="storageInquiryAction"
+			method="queryStorageInquiryListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="exportStorageInquiry" class="storageInquiryAction"
+			method="exportStorageInquiry">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>	
+		
+		<!-- 使用人单证库存查询统计分页查询  -->
+		<action name="queryAvailableDocInquiryListByPages" class="availableDocInquiryAction"
+			method="queryAvailableDocInquiryListByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+	</package>
+	
+		
+</struts>

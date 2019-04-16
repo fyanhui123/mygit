@@ -1,0 +1,81 @@
+body {
+	background: #ffcac0;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin: 0;
+	background:url(../images/login-bg.jpg) no-repeat;
+}
+#base {
+	position:absolute;
+	width:826px;
+	height:489px;
+	margin-top:-244px;
+	margin-left:-413px;
+	left: 50%;
+	top: 50%;
+	background:url(../images/login-board.gif)}
+#login-img {
+	position:absolute;
+	width: 367px;
+	height: 271px;
+	left:46px;
+	top:103px;
+}
+#login-input {
+	position:absolute;
+	font-size:12px;
+	color:#000;
+	left:495px;
+	top:160px;
+}
+#login-btn1 {
+	position:absolute;
+	right: 100px;
+	top: 141px;
+}
+#login-btn2 {
+	position:absolute;
+	right:0;
+	top: 141px;
+}
+input {
+	 border:1px solid #7e9db9;
+	 font-size:16px; 
+	 color:#000;
+	 padding:4px;
+}
+#contact{
+	position:absolute;
+	font-size:11px;
+	font-family:verdana, mingliu;
+	color:#777;
+	left:480px;
+	top:400px;
+	width:350px;
+	display:inline;
+}
+#info{
+	position:absolute;
+	font-size:12px;
+	font-family:verdana, 宋体;
+	color:#777;
+	left:45px;
+	top:425px;
+	width:600px;
+	display:inline;
+}
+#copyright{
+	position:absolute;
+	font-size:11px;
+	font-family:verdana, mingliu;
+	color:#777;
+	left:35%;
+	top:520px;
+	width:600px;
+	display:inline;
+}
+img{
+	vertical-align:middle;
+}
+
+	 

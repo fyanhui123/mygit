@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+		<bean id="allotService" class="com.tapi.tcs.vc.store.service.impl.AllotServiceImpl">
+		<property name="allotDao" ref="allotDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+	</bean>	
+	<!-- 单证机构申领 -->
+	<bean id="applyService" class="com.tapi.tcs.vc.store.service.impl.ApplyServiceImpl">
+		<property name="applyDao" ref="applyDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+	</bean>	
+	
+	<!-- 单证机构发放 -->
+	<bean id="provideService" class="com.tapi.tcs.vc.store.service.impl.ProvideServiceImpl">
+		<property name="applyDao" ref="applyDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="vcDocMngRuleDao" ref="vcDocMngRuleDao" />
+	</bean>	
+
+	<!-- 印刷入库Service -->
+	<bean id="docInStoreManageService"
+		class="com.tapi.tcs.vc.store.service.impl.DocInStoreManageServiceImpl" >
+		<property name="docInStoreManageDAO" ref="docInStoreManageDAO"></property>
+		<property name="approveDao" ref="approveDao"></property>
+		<property name="vcStorageDao" ref="vcStorageDao"></property>
+		<property name="takeNoDao" ref="takeNoDao"></property>
+		<property name="vcLevelDao" ref="vcLevelDao"></property>
+	</bean>
+	
+	<bean id="recycleService" class="com.tapi.tcs.vc.store.service.impl.RecycleServiceImpl">
+		<property name="recycleDao" ref="recycleDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="takeNoDao" ref="takeNoDao" />		
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="abnormalVerificationDao" ref="abnormalVerificationDao" />
+	</bean>
+	
+	<!-- 使用人单证发放Service -->
+	<bean id="servantDocManageService" class="com.tapi.tcs.vc.store.service.impl.ServantDocManageServiceImpl">
+		<property name="vcDocTakerIoDao" ref="vcDocTakerIoDao" />
+		<property name="vcTakerDao" ref="vcTakerDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="vcAvailableDocDao" ref="vcAvailableDocDao" />
+		<property name="vcDocVersionInfoDao" ref="vcDocVersionInfoDao" />
+		<property name="vcDocMngRuleDao" ref="vcDocMngRuleDao" />
+	</bean>
+	
+	<!-- 单证出入库Service -->
+	<bean id="vcStorageInOutService" class="com.tapi.tcs.vc.store.service.impl.VcStorageInOutServiceImpl">
+		<property name="vcStorageInOutDao" ref="vcStorageInOutDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />		
+	</bean>
+	
+</beans>
+
+

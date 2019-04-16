@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="account" extends="struts-default" namespace="/account">
+
+
+		<!-- 进入单证对账手工同步界面-->
+		<action name="initBisAccount" class="docNumAccountAction" method="initBisAccount">
+			<result name="success">/pages/account/jsp/DocNumAccount.jsp</result>
+		</action>
+		
+		<!-- 手工导入提交-->
+		<action name="insuranceImportFile" class="docNumAccountAction" method="executeImportBisAcctFilEmanual">
+			<result name="success">/pages/account/jsp/DocNumAccount.jsp</result>
+		</action>
+		
+		<!-- 手工同步提交-->
+		<action name="insuranceAccountFile" class="docNumAccountAction" method="executeBisAcctEmanual">
+			<result name="success">/pages/account/jsp/DocNumAccount.jsp</result>
+		</action>
+	</package>
+
+</struts>
+

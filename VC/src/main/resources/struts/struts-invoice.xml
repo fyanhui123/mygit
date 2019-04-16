@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="invoice" extends="struts-default" namespace="/invoice">
+		<action name="preInvoiceExportQuery" class="invoiceExportAction" method="preInvoiceExportQuery">
+			<result name="success">/pages/invoice/jsp/InvoiceExportList.jsp</result>
+		</action>
+		<!-- 进入领用存报表生成界面 -->
+		<action name="initInvoiceReportGenerate" class="invoiceReportAction" method="initInvoiceReportGenerate">
+			<result name="success">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+			<result name="fail">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+		</action>
+		<!-- 领用存报表生成前查询 -->
+		<action name="queryReportBeforeGererate" class="invoiceReportAction" method="queryReportBeforeGererate">
+			<result name="success">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+			<result name="fail">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+		</action>
+		<!-- 生成领用存报表 -->
+		<action name="generateReport" class="invoiceReportAction" method="generateReport">
+			<result name="success">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+			<result name="fail">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+		</action>
+		<!-- 进入领用存报表查询页面 -->
+		<action name="initInvoiceReportInquiry" class="invoiceReportAction" method="initInvoiceReportInquiry">
+			<result name="success">/pages/invoice/jsp/InvoiceReportInquiry.jsp</result>
+			<result name="fail">/pages/invoice/jsp/InvoiceReportInquiry.jsp</result>
+		</action>
+		<!-- 查看领用存报表明细 -->
+		<action name="queryReportDetail" class="invoiceReportAction" method="queryReportDetail">
+			<result name="success">/pages/invoice/jsp/InvoiceReportGenerate.jsp</result>
+			<result name="fail">/pages/invoice/jsp/InvoiceReportInquiry.jsp</result>
+		</action>
+		<!-- 领购查询 -->
+		<action name="initInvoiceBuyQuery" class="invoiceReportAction" method="initInvoiceBuyQuery">
+			<result name="success">/pages/invoice/jsp/InvoiceBuyQuery.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 福建领购发票主页面 -->
+	 <package name="platform"  extends="struts-default"  namespace="/platform">
+	    <action   name="queryInvoicePurchase"   class="invoicePurchaseAction"   method="queryInvoicePurchase">
+	        <result  name="success">/pages/invoice/jsp/InvoicePurchaseList.jsp</result>
+	    </action>
+	 </package>
+	
+	
+	<package name="invoiceJson" extends="json-default" namespace="/invoiceJson">
+		<action name="queryInvoiceExport" class="invoiceExportAction" method="queryInvoiceExport">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param>
+			</result>
+		</action>	
+		<action name="getJSONInsuTypeList" class="invoiceExportAction" method="queryJSONInsuTypeList">
+			<result type="json">
+				<param name = "root" >mapList</param>
+			</result>
+		</action>	
+		<action name="getJSONInsuKindList" class="invoiceExportAction" method="queryJSONInsuKindList">
+			<result type="json">
+				<param name = "root" >mapList</param>
+			</result>
+		</action>	
+		<action name="getJSONCompanyList" class="invoiceExportAction" method="queryJSONCompanyList">
+			<result type="json">
+				<param name = "root" >mapList</param>
+			</result>
+		</action>	
+		<action name="generateFile" class="invoiceExportAction" method="generateFile">
+			<result type="json">
+				<param name = "root" >jsonData</param>
+			</result>
+		</action>
+		<!-- 导出领用存报表 -->
+		<action name="exportReport" class="invoiceReportAction"
+			method="exportReport">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		<!-- 分页查询领用存报表 -->
+		<action name="queryReportPageList" class="invoiceReportAction" method="queryReportPageList">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param>
+			</result>
+		</action>
+		<!-- 分页查询领购信息 -->
+		<action name="queryInvoiceBuyPageList" class="invoiceReportAction" method="queryInvoiceBuyPageList">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 福建领购发票 -->
+	<package name="platformJson" extends="json-default" namespace="/platformJson">
+	   
+	    <!--查询纳税人基本信息-->
+	    <action  name="queryInvoicePurchaseBaseInfo"   class="invoicePurchaseAction"   method="queryInvoicePurchaseBaseInfo">
+	        <result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	    </action>
+	    <!--查询发票领购信息-->
+	     <action  name="queryInvoicePurchasePurchase"   class="invoicePurchaseAction"   method="queryInvoicePurchasePurchase">
+	        <result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	    </action>
+	    <!--查询纳税人授权信息-->
+	     <action  name="queryInvoicePurchaseImpower"   class="invoicePurchaseAction"   method="queryInvoicePurchaseImpower">
+	        <result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	    </action>
+	    
+	     <!--查询纳税人授权明细信息-->
+	     <action  name="queryInvoicePurchaseImpowerDet"   class="invoicePurchaseAction"   method="queryInvoicePurchaseImpowerDet">
+	        <result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	    </action>
+	    
+	    
+	    <!--直接入库查询单证类型信息表-->
+	     <action  name="queryInvoiceDocVersion"   class="invoicePurchaseAction"   method="queryInvoiceDocVersion">
+	        <result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+	    </action>
+	    
+	    
+	     <!--直接入库  插入入库申请、入库申请明细、入库审批表、更新领购信息-->
+	     <action  name="inStoreInvoiceDocVersion"   class="invoicePurchaseAction"   method="inStoreInvoiceDocVersion">
+	        <result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+	    </action>
+	    
+	    
+	    
+	</package>
+	
+</struts>
+

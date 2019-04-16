@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="vcMenu" extends="struts-default" namespace="/vcMenu">
+		<!-- -->
+		 <action name="queryMenu" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryMenu">
+			<result name="success">/pages/baseinfo/jsp/menuDefAddPage.jsp</result>
+		</action> 
+		 	<action name="queryRoleMenu" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryRoleMenu">
+			<result name="success">/pages/baseinfo/jsp/VcRoleEdit.jsp</result>
+		</action> 
+		
+		<!-- 新增菜单的action -->
+	 	<action name="saveMenuDef" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="saveMenuDef">
+			<result name="success">/pages/baseinfo/jsp/menuDefAddPage.jsp</result>
+		</action>
+		
+		<action name="updateMenu" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="updateMenu">
+			<result name="success">/pages/baseinfo/jsp/menuDefPageList.jsp</result>
+		</action>
+		
+		<!-- 修改菜单的action -->
+		<action name="editMenuDef" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="editMenuDef">
+			<result name="editMenuDef">/pages/baseinfo/jsp/menuDefEditPage.jsp</result>
+			<result name="viewMenuDef">/pages/baseinfo/jsp/menuDefPageList.jsp</result>
+		</action>
+		<action name="deleteMenuDef" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="deleteMenuDef">
+			<result name="success">/pages/baseinfo/jsp/menuDefPageList.jsp</result>
+		</action>
+		
+		<action name="restoreMenuDef" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="restoreMenuDef">
+			<result name="success">/pages/baseinfo/jsp/menuDefPageList.jsp</result>
+		</action>
+			
+	</package>
+	
+	
+	<package name="rolemgrJson" extends="json-default">
+		<!-- 角色action -->
+		<action name="queryRoleDefByPages" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryRoleDefByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="queryDTreeDtosOfValid" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryDTreeDtosOfValid">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="savedistributeMenuDef" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="savedistributeMenuDef">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="queryDTreeDtosBySystemCode" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryDTreeDtosBySystemCode">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+        
+		<action name="queryMenuDefByPages" class="com.tapi.tcs.vc.vcmenu.web.MenuAction" method="queryMenuDefByPages">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+	</package>
+</struts>
+
+
+

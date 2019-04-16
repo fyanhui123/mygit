@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<!-- 单证类型查询接口的service -->	
+	<bean id="vcDocVerInfoService"
+		class="com.tapi.tcs.vc.webservice.provider.docVerInquiryOld.service.impl.VcDocVerInfoServiceImpl" >
+		<property name="vcDocVerInfoDao" ref="vcDocVerInfoDao" />
+		<property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>
+	
+	<!-- 核销接口的service -->
+	<bean id="docExecuteUsedService" class="com.tapi.tcs.vc.webservice.provider.docDoUsedOld.service.impl.DocExecuteUsedServiceImpl">
+		<property name="docExecuteUsedDao" ref="docExecuteUsedDao" />
+	</bean>
+	
+	<!--接口   单证作废     -->
+	<bean id="docAnnuledService" class="com.tapi.tcs.vc.webservice.provider.docDoAnnuledOld.service.impl.DocAnnuledServiceImpl">
+		<property name="normalVerificationDao" ref="normalVerificationDao" />
+		<property name="abnormalVerificationDao" ref="abnormalVerificationDao" />
+		<property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>	
+	
+	<!--接口   单证号段查询     -->
+	<bean  id="docNumQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docNumInquiryOld.service.impl.DocNumQueryServiceImpl">
+	    <property name="docNumQueryDao" ref="docNumQueryDao" />
+	    <property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>
+	<!--接口   单证流水号状态查询      -->
+	<bean  id="docNumStatusQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiryOld.service.impl.DocNumStatusQueryServiceImpl">
+	    <property name="docNumStatusInquiryDao" ref="docNumStatusInquiryDao" />
+	    <property name="vcDocStatusDao" ref="vcDocStatusDao" />
+	    <property name="docExecuteUsedDao" ref="docExecuteUsedDao" />
+	    <property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>
+	
+
+	  <!--新核心系统接口   单证类型查询    -->
+	<bean  id="docVerInquiryQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docVerInquiry.service.impl.DocVerInquiryQueryServiceImpl">
+	    <property name="docVerInquiryDao" ref="docVerInquiryDao" />
+	    <property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>
+
+	<!--激活卡信息查询接口对应的服务类-->
+	<bean id="vcInsuCardInquiryService" class="com.tapi.tcs.vc.webservice.provider.insuCardInfoInquiry.service.impl.VcInsuCardInquiryServiceImpl">
+		<property name="vcInsuCardInquiryDao" ref="vcInsuCardInquiryDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+	</bean>	
+
+	
+	<!--新核心系统接口   单证流水号状态查询    -->
+	 <bean  id="docNumStatusInquiryQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiry.service.impl.DocNumStatusInquiryQueryServiceImpl">
+	    <property name="newDocNumStatusInquiryDao" ref="newDocNumStatusInquiryDao" /> 
+	</bean>
+	
+	<!--新核心系统接口   单证核销    -->
+	 <bean  id="docDoUsedQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docDoUsed.service.impl.DocDoUsedQueryServiceImpl">
+	    <property name="docDoUsedDao"   ref="docDoUsedDao" />
+	    <property name="vcDocStatusDao" ref="vcDocStatusDao" />
+	    <property name="docExecuteUsedDao"   ref="docExecuteUsedDao" />
+	    <property name="vcBaseInfoDao"   ref="vcBaseInfoDao" />
+	</bean>
+	  
+	  <!--新核心系统接口   单证作废   -->
+	 <bean  id="docDoAnnuledQueryService"
+	  class="com.tapi.tcs.vc.webservice.provider.docDoAnnuled.service.impl.DocDoAnnuledQueryServiceImpl">
+	    <property name="normalVerificationDao"   ref="normalVerificationDao" /> 
+	    <property name="abnormalVerificationDao" ref="abnormalVerificationDao" /> 
+	    <property name="vcBaseInfoDao"   ref="vcBaseInfoDao" />
+	</bean>
+	
+	 <!--新核心系统接口    激活卡激活 -->
+	 <bean  id="insuranceActivatedService"
+	  class="com.tapi.tcs.vc.webservice.provider.insuranceCardDoActivated.service.InsuranceActivatedServiceImpl">
+	    <property name="docExecuteUsedDao"   ref="docExecuteUsedDao" /> 
+	    <property name="insuranceActivatedDao" ref="insuranceActivatedDao" /> 
+	</bean>
+	
+	<!--激活卡缴费、退费处理成功回写单证系统对应的服务类-->
+ 	<bean id="vcInsuranceCardDoPaidService" class="com.tapi.tcs.vc.webservice.provider.insuranceCardDoPaid.service.impl.VcInsuranceCardDoPaidServiceImpl">
+  		<property name="insuCardSalesService" ref="insuCardSalesService" />
+ 	</bean> 
+ 	
+ 	<!-- 单证系统webservice 报文记录业务 -->
+ 	<bean id="vcReportService" class="com.tapi.tcs.vc.webservice.provider.common.service.impl.VcReportServiceImpl">
+  		<property name="vcReportDao" ref="vcReportDao" />
+ 	</bean> 
+	
+	<!--新核心系统接口    单证重打 -->
+	<bean id="docReprintService" class="com.tapi.tcs.vc.webservice.provider.docDoReprinted.service.impl.DocReprintServiceImpl">
+		<property name="docReprintDao" ref="docReprintDao" />
+		<property name="vcDocStatusDao" ref="vcDocStatusDao" />
+	</bean>
+	
+	<!--人身险POS系统接口  可使用流水号查询接口-->
+	<bean id="queryAvailableNumService" class="com.tapi.tcs.vc.webservice.provider.docNumInquiry.service.impl.QueryAvailableNumServiceImpl">
+		<property name="queryAvailableNumDao" ref="queryAvailableNumDao" />
+	</bean>
+	
+ 	<!--人身险POS系统接口(新 对接神州海纳系统)  可使用流水号查询接口-->
+	<bean id="queryAvailableNumNewService" class="com.tapi.tcs.vc.webservice.provider.docNumInquiryNew.service.impl.QueryAvailableNumNewServiceImpl">
+		<property name="queryAvailableNumNewDao" ref="queryAvailableNumNewDao" />
+	</bean>
+	
+	<!--单证类型同步接口-->
+	<bean id="docVerInfoInquiryQueryService" class="com.tapi.tcs.vc.webservice.provider.docVerInfoInquiry.service.impl.DocVerInfoInquiryQueryServiceImpl">
+		<property name="docVerInfoInquiryDao" ref="docVerInfoInquiryDao" />
+	</bean>
+	
+	<!-- 单证冲正 -->
+	<bean id="docReversedService" class="com.tapi.tcs.vc.webservice.provider.docDoReversed.service.impl.DocReversedServiceImpl">
+		<property name="docReversedDao" ref="docReversedDao" />
+	</bean>
+	 
+	 <!-- 发票是否上传平台查询接口 -->
+	<bean id="invoiceIsToPlatQueryService" class="com.tapi.tcs.vc.webservice.provider.invoiceUploadPlatInquiry.service.impl.InvoiceIsToPlatQueryServiceImpl">
+		<property name="vcBaseInfoDao" ref="vcBaseInfoDao" />
+	</bean>
+	
+	 <!-- 收付 发票核销 -->
+	 <bean  id="vcInvoiceDoUsedService"
+	  class="com.tapi.tcs.vc.webservice.provider.invoiceDoUsed.service.impl.VcInvoiceDoUsedServiceImpl">	    
+	    <property name="vcDocStatusDao" ref="vcDocStatusDao" />	    
+	    <property name="normalVerificationDao"   ref="normalVerificationDao" />
+	    <property name="vcAvailableDocDao"   ref="vcAvailableDocDao" />
+	</bean>
+	
+	<!-- 通用发票上传地税-->
+	<bean id="vcInvoiceTaxUploadProxyService" class="com.tapi.tcs.vc.invoice.taxupload.common.service.impl.VCCommonInvoiceTaxUploadProxyImpl">
+		<property name="rootXmlName" value="${rootXmlName}"></property>
+		<property name="vcInvoiceUploadTaxPlatDao" ref="vcInvoiceUploadTaxPlatDao"></property>
+		<property name="vcPubCodeManagerDao" ref="vcPubCodeManagerDao"></property>		
+		<property name="companyCode" value="${common.companyCodes}"></property>
+	</bean>
+	
+	<!-- 单证撤单冲正-->
+	<bean id="cancelReversedService" class="com.tapi.tcs.vc.webservice.provider.cancelDoReversed.service.impl.CancelReversedServiceImpl">
+		<property name="cancelReversedDao" ref="cancelReversedDao" />
+	</bean>
+	
+		<!-- 单证同步（同步发放轨迹表）-->
+	<bean id="queryProvideNumService"
+		class="com.tapi.tcs.vc.webservice.provider.docNumSynchronize.service.impl.QueryProvideNumServiceImpl">
+		<property name="queryProvideNumDao" ref="queryProvideNumDao"></property>
+	</bean>
+		<!-- 发票自动入库-->
+		<bean id="vcInputStorageService"
+		class="com.tapi.tcs.vc.webservice.provider.inStorage.service.impl.VcInputStorageServiceImpl">
+		<property name="inputStorageDao" ref="inputStorageDao"></property>
+		<property name="vcStorageDao" ref="vcStorageDao"></property>
+	</bean>
+	
+		<!-- 发票自动分发回收-->
+		<bean id="vcOutStorageService"
+		class="com.tapi.tcs.vc.webservice.provider.outStorage.service.impl.VcOutStorageServiceImpl">
+		<property name="vcStorageDao" ref="vcStorageDao"></property>
+		<property name="vcDocTakerIoDao" ref="vcDocTakerIoDao"></property>
+		<property name="vcAvailableDocDao" ref="vcAvailableDocDao"></property>
+		<property name="vcTakerDao" ref="vcTakerDao"></property>
+		<property name="inputStorageDao" ref="inputStorageDao"></property>
+		<property name="outStorageDao" ref="outStorageDao"></property>
+	</bean>
+		<!-- 空白发票作废-->
+		<bean id="vcCancelInvoiceService"
+		class="com.tapi.tcs.vc.webservice.provider.newCancelInvoice.service.VcCancelInvoiceServiceImpl">
+		         <property name="vcStorageDao" ref="vcStorageDao"></property>
+		         <property name="inputStorageDao" ref="inputStorageDao"></property>
+		         <property name="outStorageDao" ref="outStorageDao"></property>
+		         <property name="abnormalVerificationDao" ref="abnormalVerificationDao"></property>
+		         <property name="cancelInvoiceDaos" ref="cancelInvoiceDaos"></property>
+		         <property name="doUsedDao" ref="doUsedDao"></property> 
+	    </bean>
+	<!-- 新发票核销-->
+	<bean id="newVcInvoiceDoUsedService"
+		class="com.tapi.tcs.vc.webservice.provider.newInvoiceDoUsed.service.VcNewInvoiceDoUsedServiceImpl">
+		         <property name="inputStorageDao" ref="inputStorageDao"></property>
+		         <property name="doUsedDao" ref="doUsedDao"></property>
+		         <property name="docExecuteUsedDao" ref="docExecuteUsedDao"></property>
+		         <property name="normalVerificationDao" ref="normalVerificationDao"></property>
+	 </bean>
+	 
+	 
+	 <!-- 新发票作废-->
+	<bean id="doAnnuledService"
+		class="com.tapi.tcs.vc.webservice.provider.newDocDoAnnuled.service.VcNewInvoiceDocDoAnnuledServiceImpl">
+		         <property name="normalVerificationDao" ref="normalVerificationDao"></property>
+		         <property name="abnormalVerificationDao" ref="abnormalVerificationDao"></property>
+		         <property name="inputStorageDao" ref="inputStorageDao"></property>
+		         <property name="newInvoiceDocDoAnnuledDao" ref="newInvoiceDocDoAnnuledDao"></property>
+		         <property name="doUsedDao" ref="doUsedDao"></property>
+		         <property name="docExecuteUsedDao" ref="docExecuteUsedDao"></property>
+	 </bean>
+	 
+	  <bean id="docService" class="com.tapi.tcs.vc.webservice.provider.RiskInfoService.service.DocServiceImpl">
+		<property name="insuKindDao" ref="insuKindDao" />	
+		<property name="insuTypeDao" ref="insuTypeDao" />	
+		<property name="vcDocRelInsuKindDao" ref="vcDocRelInsuKindDao" />	
+	</bean>	
+	 
+	   <bean id="vcClassInfoService" class="com.tapi.tcs.vc.webservice.provider.ClassInfoService.service.VcClassInfoServiceImpl">
+		<property name="insuTypeDao" ref="insuTypeDao" />	
+	</bean>	
+	 
+</beans>
+
+

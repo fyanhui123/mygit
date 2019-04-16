@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+    <!-- 印刷入库查询统计 -->	  
+    <bean id="inquiryManageService"
+		class="com.tapi.tcs.vc.inquiry.service.impl.InquiryManageServiceImpl" >  
+		<property name="inquiryManageDAO" ref="inquiryManageDAO" />	
+		<property name="approveDao" ref="approveDao" />	
+		<property name="docInStoreManageDAO" ref="docInStoreManageDAO" />
+		<property name="vcPubCodeManagerDao" ref="vcPubCodeManagerDao" />			
+	</bean> 
+	
+	<!-- 单证申领查询统计 -->	
+	<bean id="applyInquiryService"
+		class="com.tapi.tcs.vc.inquiry.service.impl.ApplyInquiryServiceImpl" >  
+		<property name="applyInquiryDao" ref="applyInquiryDao" />	
+		<property name="applyDao" ref="applyDao" />			
+	</bean>
+	
+	<!-- 单证库存查询统计 -->	
+	<bean id="storageInquiryService"
+		class="com.tapi.tcs.vc.inquiry.service.impl.StorageInquiryServiceImpl" >  
+		<property name="storageInquiryDao" ref="storageInquiryDao" />
+	</bean>
+	
+	<!-- 使用人单证库存查询统计 -->	
+	<bean id="availableDocInquiryService"
+		class="com.tapi.tcs.vc.inquiry.service.impl.AvailableDocInquiryServiceImpl" >  
+		<property name="availableDocInquiryDao" ref="availableDocInquiryDao" />
+	</bean>
+	
+</beans>
+
+

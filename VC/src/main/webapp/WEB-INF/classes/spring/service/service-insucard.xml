@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<!-- 激活卡导入 Service -->
+	<bean id="insuCardImportService" class="com.tapi.tcs.vc.insucard.service.impl.InsuCardImportServiceImpl">
+		<property name="vcInsuCardImportInfoDao" ref="vcInsuCardImportInfoDao" />
+		<property name="vcInsuranceCardDao" ref="vcInsuranceCardDao" />		
+	</bean>
+	<!-- 激活卡销售 Service -->
+	<bean id="insuCardSalesService" class="com.tapi.tcs.vc.insucard.service.impl.InsuCardSalesServiceImpl">		
+		<property name="vcInsuranceCardDao" ref="vcInsuranceCardDao" />	
+		<property name="vcInsuCardSalesRecordDao" ref="vcInsuCardSalesRecordDao" />
+		<property name="vcInsuCardSalesDetailDao" ref="vcInsuCardSalesDetailDao" />
+		<property name="vcStorageDao" ref="vcStorageDao" />
+		<property name="vcAvailableDocDao" ref="vcAvailableDocDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />	
+		<property name="vcTakerDao" ref="vcTakerDao" />	
+		<property name="vcPayFeeAccountDao" ref="vcPayFeeAccountDao" />	
+	</bean>
+</beans>
+
+

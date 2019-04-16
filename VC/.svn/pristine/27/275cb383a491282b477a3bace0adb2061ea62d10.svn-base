@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    
+    <!-- 单证种类 -->
+ 	<bean id="docTypeAction"
+		class="com.tapi.tcs.vc.baseinfo.web.DocTypeAction"
+		scope="prototype">
+		<property name="vcDocTypeService" ref="vcDocTypeService" />
+	</bean>
+	<!-- 印刷厂 -->
+	<bean id="printeryAction"
+		class="com.tapi.tcs.vc.baseinfo.web.PrinteryAction"
+		scope="prototype">
+		<property name="vcPrinteryService" ref="vcPrinteryService" />
+		<property name="vcDocVersionInfoService" ref="vcDocVersionInfoService" />
+	</bean>
+	
+	<!-- 单证版本 -->
+	<bean id="docVersionInfoAction"
+		class="com.tapi.tcs.vc.baseinfo.web.DocVersionInfoAction"
+		scope="prototype">
+		<property name="vcDocVersionInfoService" ref="vcDocVersionInfoService" />
+		<property name="pubCodeManagerService" ref="pubCodeManagerService" />
+		<property name="insuKindService" ref="insuKindService" />
+		<property name="vcConstantConfigService" ref="vcConstantConfigService" />
+	</bean>
+	
+ 	<!-- 单证险类 -->
+	<bean id="insuTypeAction"
+		class="com.tapi.tcs.vc.baseinfo.web.InsuTypeAction"
+		scope="prototype">
+		<property name="insuTypeService" ref="insuTypeService" />
+	</bean>
+	
+	<!-- 单证险种 -->
+	<bean id="insuKindAction" 
+			class="com.tapi.tcs.vc.baseinfo.web.InsuKindAction"
+			scope="prototype">
+		<property name="insuKindService" ref="insuKindService" />
+	</bean>
+	
+	
+	<!-- 通用代码维护 -->
+	<bean id="pubCodeManagerAction"
+		class="com.tapi.tcs.vc.common.web.PubCodeManagerAction"
+		scope="prototype">
+		<property name="pubCodeManagerService" ref="pubCodeManagerService" />
+	</bean>
+	
+	<!-- 单证管理控制规则维护 -->
+	<bean id="docMngRuleAction"
+		class="com.tapi.tcs.vc.baseinfo.web.DocMngRuleAction"
+		scope="prototype">
+		<property name="vcDocMngRuleService" ref="vcDocMngRuleService" />
+	</bean>
+
+	<!-- 机构/用户/权限 -->
+	<bean id="vcLevelAction"
+		class="com.tapi.tcs.vc.baseinfo.web.VcLevelAction"
+		scope="prototype">
+		<property name="vcLevelService" ref="vcLevelService" />
+		<property name="vcTakerService" ref="vcTakerService" />
+	</bean>
+
+	<!-- 使用人  -->
+	<bean id="vcTakerAction"
+		class="com.tapi.tcs.vc.baseinfo.web.VcTakerAction"
+		scope="prototype">
+		<property name="vcTakerService" ref="vcTakerService" />
+	</bean>
+	
+	<!-- 统一授权 -->
+ 	<bean id="oAuthAction" class="com.tapi.tcs.vc.oauth.web.OAuthAction" scope="prototype">
+	    <property name="oAuthService" ref="oAuthService"/> 
+	</bean>
+	<bean id="vcMenuAction"
+		class="com.tapi.tcs.vc.vcmenu.web.MenuAction"
+		scope="prototype">
+		<property name="vcMenuService" ref="vcMenuService" />
+	</bean>
+</beans>

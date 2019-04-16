@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="pub" extends="struts-default" namespace="/pub">
+	</package>
+
+	<package name="pubJson" extends="json-default" namespace="/pubJson">
+
+		<!-- 银行自动完成组件 -->
+		<action name="queryPubBanksList" class="bankManagerAction" method="queryPubBanksList">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		<!-- 银行区域自动完成组件 -->
+		<action name="queryPubStandardareasList" class="bankManagerAction" method="queryPubStandardareasList">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		<!-- 银行支行自动完成组件 -->
+		<action name="queryPubBanklocationsList" class="bankManagerAction" method="queryPubBanklocationsList">
+			<result type="json">
+				<param name="root">codeLabelList</param>
+			</result>
+		</action>
+		
+		
+		<!-- 险类下拉框、自动完成组件 -->
+		<action name="queryJsonPubRiskClassList" class="pubRiskAction" method="queryJsonPubRiskClassList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+		<!-- 险种下拉框、自动完成组件 -->
+		<action name="queryJsonPubRiskList" class="pubRiskAction" method="queryJsonPubRiskList">
+			<result type="json">
+				<param name="root">mapList</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>
+

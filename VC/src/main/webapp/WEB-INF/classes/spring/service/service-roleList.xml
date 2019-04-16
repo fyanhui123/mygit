@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+	<!-- 单证库存查询统计 -->	
+	<bean id="rolelistService"
+		class="com.tapi.tcs.vc.rolelist.service.impl.RoleListServiceImpl" >  
+		<property name="roleListDao" ref="roleListDao" />
+	</bean>
+	
+	<bean id="queryInvoiceService"
+		class="com.tapi.tcs.vc.newInvoice.service.impl.QueryInvoiceServiceImpl" >  
+		<property name="queryInvoiceDao" ref="queryInvoiceDao" />
+		<property name="vcLostDao" ref="vcLostDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="approveDao" ref="approveDao" />
+	</bean>
+	<bean id="newDestroyService"
+		class="com.tapi.tcs.vc.newInvoice.service.impl.NewDestroyServiceImpl" >  
+		<property name="destroyDao" ref="destroyDao" />
+		<property name="queryInvoiceDao" ref="queryInvoiceDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="newDestroyDao" ref="newDestroyDao" />
+	</bean>
+	
+	<bean id="invoiceDestroyService"
+		class="com.tapi.tcs.vc.newInvoice.service.impl.InvoiceDestroyServiceImpl" >  
+		<property name="destroyDao" ref="destroyDao" />
+		<property name="takeNoDao" ref="takeNoDao" />
+		<property name="vcLevelDao" ref="vcLevelDao" />
+		<property name="approveDao" ref="approveDao" />
+		<property name="invoiceDestroyDao" ref="invoiceDestroyDao" />
+		<property name="queryInvoiceDao" ref="queryInvoiceDao" />
+	</bean>
+</beans>
+
+

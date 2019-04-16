@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 激活卡-->
+	<package name="insucard" extends="struts-default" namespace="/insucard">
+	     <!-- 进入激活卡导入查询页面  -->
+		<action name="insuranceCardImport" class="insuCardImportAction"
+			method="initInsuCardQuery">
+			<result name="success">/pages/insucard/jsp/InsuranceCardQuery.jsp</result>
+		</action>
+		
+		 <!-- 进入激活卡导入页面  -->
+		<action name="initImport" class="insuCardImportAction"
+			method="initImport">
+			<result name="success">/pages/insucard/jsp/InsuranceCardImport.jsp</result>
+		</action>
+		 <!-- 激活卡导入提交  -->
+		<action name="insuranceCardupLoad" class="insuCardImportAction"
+			method="upLoadInsuranceCard">
+			<result name="success">/pages/insucard/jsp/ImportOrCheckResult.jsp</result>
+		</action>		 
+		 <!-- 激活卡导入文件校验  -->
+		 <!--<action name="insuranceCardupLoadCheck" class="insuCardImportAction"
+			method="insuranceCardupLoadCheck">
+			<result name="success">/pages/insucard/jsp/ImportOrCheckResult.jsp</result>
+		</action>	-->
+		
+		
+		<!-- 进入激活卡销售查询页面  -->
+		<action name="initInsuCardSalesQuery" class="insuCardSalesAction"
+			method="initInsuCardSalesQuery">
+			<result name="success">/pages/insucard/jsp/InsuCardSalesQuery.jsp</result>
+		</action>
+		<!--  初始化激活卡销售新增页面  -->
+		<action name="initInsuCardSalesAdd" class="insuCardSalesAction"
+			method="initInsuCardSalesAdd">
+			<result name="success">/pages/insucard/jsp/InsuCardSalesAdd.jsp</result>
+		</action>
+		<action name="initInsuCardSalesUpdate" class="insuCardSalesAction"
+			method="initInsuCardSalesUpdate">
+			<result name="success">/pages/insucard/jsp/InsuCardSalesEdit.jsp</result>
+		</action>
+		<!-- 保存激活卡销售 -->
+		<action name="saveInsuCardSales" class="insuCardSalesAction" method="saveInsuCardSales">
+			 <result name="success">/pages/insucard/jsp/InsuCardSalesQuery.jsp</result>
+			 <result name="insertFail">/pages/insucard/jsp/InsuCardSalesAdd.jsp</result>
+			 <result name="updateFail">/pages/insucard/jsp/InsuCardSalesEdit.jsp</result>
+		</action>
+		<!--激活卡销售查看 -->
+		<action name="viewInsuCardSales" class="insuCardSalesAction"  method="viewInsuCardSales">
+			<result name="success">/pages/insucard/jsp/InsuCardSalesView.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 进入激活卡退费查询页面  -->
+		<action name="initInsuCardRefundQuery" class="insuCardSalesAction"
+			method="initInsuCardRefundQuery">
+			<result name="success">/pages/insucard/jsp/InsuCardRefundQuery.jsp</result>
+		</action>
+		<!--  激活卡退卡添加页面  -->
+		<action name="initInsuCardRefundAdd" class="insuCardSalesAction"
+			method="initInsuCardRefundAdd">
+			<result name="success">/pages/insucard/jsp/InsuCardRefundAdd.jsp</result>
+		</action>	
+		<!--  激活卡退卡修改页面  -->	
+		<action name="initInsuCardRefundUpdate" class="insuCardSalesAction"
+			method="initInsuCardRefundUpdate">
+			<result name="success">/pages/insucard/jsp/InsuCardRefundEdit.jsp</result>
+		</action>
+		<!-- 保存激活卡退卡 -->
+		<action name="saveInsuCardRefund" class="insuCardSalesAction" method="saveInsuCardRefund">
+			 <result name="success">/pages/insucard/jsp/InsuCardRefundQuery.jsp</result>
+			 <result name="insertFail">/pages/insucard/jsp/InsuCardRefundAdd.jsp</result>
+			 <result name="updateFail">/pages/insucard/jsp/InsuCardRefundEdit.jsp</result>
+		</action>
+		<!-- 激活卡退卡查看 -->
+		<action name="viewInsuCardRefund" class="insuCardSalesAction"  method="viewInsuCardRefund">
+			<result name="success">/pages/insucard/jsp/InsuCardRefundView.jsp</result>
+		</action>
+		
+		<!--  初始化账户修改页面  -->	
+		<action name="initAccountUpdate" class="insuCardSalesAction"
+			method="initAccountUpdate">
+			<result name="success">/pages/insucard/jsp/PayFeeAccountModify.jsp</result>
+		</action>
+		<!-- 保存账户修改 -->
+		<action name="submitAccountModify" class="insuCardSalesAction" method="submitAccountModify">
+			 <result name="success">/pages/insucard/jsp/InsuCardRefundQuery.jsp</result>
+			 <result name="fail">/pages/insucard/jsp/PayFeeAccounModify.jsp</result>
+		</action>
+		
+	</package>	
+	<package name="insucardJson" extends="json-default" namespace="/insucardJson">
+	    <!-- 激活卡导入查询  -->
+	  <action name="queryInsuCard" class="insuCardImportAction"
+			method="queryInsuCard">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<!-- 进入激活卡使用人发放查询  -->
+		<action name="queryInsuCardSales" class="insuCardSalesAction"
+			method="queryInsuCardSales">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		
+		<action name="deleteRecord" class="insuCardSalesAction" method="deleteRecord">
+			<result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<action name="submitInsuCardSales" class="insuCardSalesAction" method="submitInsuCardSales">
+			 <result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<!-- 激活卡缴费申请撤销 -->
+		<action name="doCancelPayFee" class="insuCardSalesAction" method="doCancelPayFee">
+			 <result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<!-- 激活卡申请退款 -->
+		<action name="doRefund" class="insuCardSalesAction" method="doRefund">
+			 <result type="json">
+				<param name="root">resultMsg</param>
+			</result>
+		</action>
+		<!-- 激活卡销售子表信息Json  -->
+		<action name="queryJsonSalesDetByRecordId" class="insuCardSalesAction"
+			method="queryJsonSalesDetByRecordId">
+			<result type="json">
+				<param name="root">vcInsuCardSalesDetailList</param>
+			</result>
+		</action>
+	</package>	
+
+</struts>
+

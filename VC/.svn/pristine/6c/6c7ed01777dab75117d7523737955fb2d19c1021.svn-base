@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+
+	<jaxws:endpoint id="DocValidInquiryService" implementor="#docValidInquiryService"
+		address="/DocValidInquiryService">
+	</jaxws:endpoint>
+
+	<bean id="docValidInquiryService"
+		class="com.tapi.tcs.vc.webservice.provider.docValidInquiry.service.impl.DocValidInquiryServiceImpl">
+		<property name="docValidQueryService" ref="docValidQueryService"></property>
+	</bean>
+	
+	<!-- 核销接口(老系统) -->
+	<jaxws:endpoint id="DocDoUsedOldService" implementor="#docDoUsedOldService"
+		address="/DocDoUsedOldService">
+		    <jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+	<bean id="docDoUsedOldService"
+		class="com.tapi.tcs.vc.webservice.provider.docDoUsedOld.component.DocDoUsedOldServiceImpl">
+		<property name="docExecuteUsedService" ref="docExecuteUsedService"></property>
+	</bean>
+	
+	
+	 <!--接口     作废接口   -->
+	<jaxws:endpoint id="DocDoAnnuledOldService" implementor="#docDoAnnuledOldService"
+		address="/DocDoAnnuledOldService">
+	    	<jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+
+	<bean id="docDoAnnuledOldService"
+		class="com.tapi.tcs.vc.webservice.provider.docDoAnnuledOld.component.DocDoAnnuledOldServiceImpl">
+		<property name="docAnnuledService" ref="docAnnuledService"></property>
+	</bean>
+	
+
+	 <!--接口   单证号段查询   -->
+
+	<jaxws:endpoint id="DocNumInquiryOldService" implementor="#docNumInquiryOldService"
+		address="/DocNumInquiryOldService"> 
+	    	<jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+
+	<bean id="docNumInquiryOldService"
+		class="com.tapi.tcs.vc.webservice.provider.docNumInquiryOld.component.DocNumInquiryOldServiceImpl">
+		<property name="docNumQueryService" ref="docNumQueryService"></property>
+	</bean>
+	
+	<!--接口   单证流水号状态查询  -->
+
+	<jaxws:endpoint id="DocNumStatusInquiryOldService" implementor="#docNumStatusInquiryOldService"
+		address="/DocNumStatusInquiryOldService">
+			<jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+
+	<bean id="docNumStatusInquiryOldService"
+		class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiryOld.component.DocNumStatusInquiryOldServiceImpl">
+		<property name="docNumStatusQueryService" ref="docNumStatusQueryService"></property>
+	</bean>
+
+	<!-- 单证类型查询接口(老系统) -->
+	<jaxws:endpoint id="DocVerInquiryOldService" implementor="#docVerInquiryOldService"
+		address="/DocVerInquiryOldService">
+			<jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+	<bean id="docVerInquiryOldService"  
+		class="com.tapi.tcs.vc.webservice.provider.docVerInquiryOld.component.DocVerInquiryOldServiceImpl">
+		<property name="vcDocVerInfoService" ref="vcDocVerInfoService"></property>
+	</bean>	
+
+	
+	 <!--新核心系统接口   单证类型查询  -->
+	<jaxws:endpoint id="DocVerInquiryService" implementor="#docVerInquiryService"
+		address="/DocVerInquiryService">
+		<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+
+	
+	<!-- 激活卡信息查询接口 -->
+	<jaxws:endpoint id="InsuCardInfoInquiryService" implementor="#insuCardInfoInquiryService"
+		address="/InsuCardInfoInquiryService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="insuCardInfoInquiryService"  
+		class="com.tapi.tcs.vc.webservice.provider.insuCardInfoInquiry.component.InsuCardInfoInquiryServiceImpl">
+		<property name="vcInsuCardInquiryService" ref="vcInsuCardInquiryService"></property>
+	</bean>	
+
+
+	<bean id="docVerInquiryService"
+		class="com.tapi.tcs.vc.webservice.provider.docVerInquiry.component.DocVerInquiryServiceImpl">
+		<property name="docVerInquiryQueryService" ref="docVerInquiryQueryService"></property>
+	</bean>
+	
+	 <!--新核心系统接口   单证流水号状态查询  -->
+	<jaxws:endpoint id="DocNumStatusInquiryService" implementor="#docNumStatusInquiryService"
+		address="/DocNumStatusInquiryService">
+		<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+
+	<bean id="docNumStatusInquiryService"
+	
+		class="com.tapi.tcs.vc.webservice.provider.docNumStatusInquiry.component.DocNumStatusInquiryServiceImpl">
+	    <property name="docNumStatusInquiryQueryService" ref="docNumStatusInquiryQueryService"></property>   
+	</bean>
+	
+	 <!--新核心系统接口   单证核销  -->
+	<jaxws:endpoint id="DocDoUsedService" implementor="#docDoUsedService"
+		address="/DocDoUsedService">
+		<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+
+	<bean id="docDoUsedService"
+		class="com.tapi.tcs.vc.webservice.provider.docDoUsed.component.DocDoUsedServiceImpl">
+		<property name="vcReportService" ref="vcReportService" />
+	    <property name="docDoUsedQueryService" ref="docDoUsedQueryService"></property>   
+	</bean>
+	
+	 <!--新核心系统接口    单证作废  -->
+	<jaxws:endpoint id="DocDoAnnuledService" implementor="#docDoAnnuledService"
+		address="/DocDoAnnuledService">
+		<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+
+	<bean id="docDoAnnuledService"
+		class="com.tapi.tcs.vc.webservice.provider.docDoAnnuled.component.DocDoAnnuledServiceImpl">
+		<property name="vcReportService" ref="vcReportService" />
+	    <property name="docDoAnnuledQueryService" ref="docDoAnnuledQueryService"></property>   
+	</bean>
+	
+	
+   <!--新核心系统接口    激活卡激活 -->
+	<jaxws:endpoint id="InsuranceCardDoActivatedService" implementor="#insuranceCardDoActivated"
+		address="/InsuranceCardDoActivatedService">
+		<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+
+	<bean id="insuranceCardDoActivated"
+		class="com.tapi.tcs.vc.webservice.provider.insuranceCardDoActivated.component.InsuranceCardDoActivatedServiceImpl">
+		<property name="vcReportService" ref="vcReportService" />
+	    <property name="insuranceActivatedService" ref="insuranceActivatedService"></property>   
+	</bean>
+
+	<!-- 激活卡缴费、退费处理成功后回写单证系统-->
+	<jaxws:endpoint id="InsuranceCardDoPaidService" implementor="#insuranceCardDoPaidService"
+		address="/InsuranceCardDoPaidService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="insuranceCardDoPaidService"  
+		class="com.tapi.tcs.vc.webservice.provider.insuranceCardDoPaid.component.InsuranceCardDoPaidServiceImpl">
+		<property name="vcReportService" ref="vcReportService" />
+		<property name="vcInsuranceCardDoPaidService" ref="vcInsuranceCardDoPaidService"></property>
+	</bean>	
+	
+	
+	<!--新核心系统接口    单证重打-->
+	<jaxws:endpoint id="DocDoReprintedService" implementor="#docDoReprintedService"
+		address="/DocDoReprintedService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="docDoReprintedService"  
+		class="com.tapi.tcs.vc.webservice.provider.docDoReprinted.component.impl.DocDoReprintedServiceImpl">
+		<property name="docReprintService" ref="docReprintService"></property>
+	</bean>
+	 
+	 <!--人身险POS系统接口  可使用流水号查询接口-->
+	<jaxws:endpoint id="DocNumInquiryService" implementor="#docNumInquiryService"
+		address="/DocNumInquiryService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="docNumInquiryService"  
+		class="com.tapi.tcs.vc.webservice.provider.docNumInquiry.component.DocNumInquiryServiceImpl">
+		<property name="queryAvailableNumService" ref="queryAvailableNumService"></property>
+	</bean>
+	
+	
+	<!--人身险POS系统接口(新 对接神州海纳系统)  可使用流水号查询接口-->
+	<jaxws:endpoint id="DocNumInquiryNewService" implementor="#docNumInquiryNewService"
+		address="/DocNumInquiryNewService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="docNumInquiryNewService"  
+		class="com.tapi.tcs.vc.webservice.provider.docNumInquiryNew.component.DocNumInquiryNewServiceImpl">
+		<property name="queryAvailableNumNewService" ref="queryAvailableNumNewService"></property>
+	</bean>
+	
+	<!--单证类型同步接口-->
+	<jaxws:endpoint id="DocVerInfoInquiryService" implementor="#docVerInfoInquiryService"
+		address="/DocVerInfoInquiryService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="docVerInfoInquiryService"  
+		class="com.tapi.tcs.vc.webservice.provider.docVerInfoInquiry.component.DocVerInfoInquiryServiceImpl">
+		<property name="docVerInfoInquiryQueryService" ref="docVerInfoInquiryQueryService"></property>
+	</bean>
+	
+	
+	<!-- 单证冲正接口(供银保使用) -->
+	<jaxws:endpoint id="DocDoReversedService" implementor="#docDoReversedService"
+		address="/DocDoReversedService">
+		    <jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+	<bean id="docDoReversedService"
+		class="com.tapi.tcs.vc.webservice.provider.docDoReversed.component.DocDoReversedServiceImpl">
+		<property name="docReversedService" ref="docReversedService"></property>
+	</bean>
+	<!-- 查询发票是否上传平台的接口 -->
+	<jaxws:endpoint id="InvoiceUploadPlatInquiryService" implementor="#invoiceUploadPlatInquiryService"
+		address="/InvoiceUploadPlatInquiryService">
+		    <jaxws:inInterceptors>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+		  	</jaxws:inInterceptors>
+		  	<jaxws:outInterceptors>
+		  		<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+		  	</jaxws:outInterceptors>
+	</jaxws:endpoint>
+	<bean id="invoiceUploadPlatInquiryService"
+		class="com.tapi.tcs.vc.webservice.provider.invoiceUploadPlatInquiry.component.InvoiceUploadPlatInquiryServiceImpl">
+		<property name="invoiceIsToPlatQueryService" ref="invoiceIsToPlatQueryService"></property>
+	</bean>
+	
+	<!-- 收付用发票核销-->
+	<jaxws:endpoint id="InvoiceDoUsedService" implementor="#invoiceDoUsedService"
+		address="/InvoiceDoUsedService">
+			<jaxws:features>
+				<bean class="org.apache.cxf.feature.LoggingFeature"></bean>
+			</jaxws:features>
+	</jaxws:endpoint>
+	<bean id="invoiceDoUsedService"  
+		class="com.tapi.tcs.vc.webservice.provider.invoiceDoUsed.component.InvoiceDoUsedServiceImpl">
+		<property name="vcReportService" ref="vcReportService" />
+		<property name="vcInvoiceDoUsedService" ref="vcInvoiceDoUsedService"></property>
+	</bean>	
+	
+	<!-- 银保单证撤单冲正接口(供银保使用) -->
+	<jaxws:endpoint id="CancelDoReversedService" implementor="#cancelDoReversedService"
+		address="/CancelDoReversedService" >
+		    
+	</jaxws:endpoint>
+	<bean id="cancelDoReversedService"
+		class="com.tapi.tcs.vc.webservice.provider.cancelDoReversed.component.CancelDoReversedServiceImpl">
+		<property name="cancelReversedService" ref="cancelReversedService"></property>
+	</bean>
+	
+	<!-- 单证同步接口(同步发放轨迹表) -->
+	<jaxws:endpoint id="DocNumSynchronizeService" implementor="#docNumSynchronizeService"
+		address="/DocNumSynchronizeService" >
+		    
+	</jaxws:endpoint>
+	<!-- 
+	
+	<bean id="docNumSynchronizeService"
+		class="com.tapi.tcs.vc.webservice.provider.docNumSynchronize.component.DocNumSynchronizeServiceImpl">
+		<property name="docNumSynchronizeService" ref="docNumSynchronizeService"></property>
+	</bean>
+	 -->
+
+	
+	<bean id="docNumSynchronizeService" class="com.tapi.tcs.vc.webservice.provider.docNumSynchronize.component.DocNumSynchronizeServiceImpl">
+		<!-- <property name="queryProvideNumDao" ref="queryProvideNumDao" /> -->
+		<property name="queryProvideNumService" ref="queryProvideNumService" />
+		
+	</bean>
+	
+	<!-- 发票自动入库接口(供增值税使用) -->
+	<jaxws:endpoint id="InputStorageService" implementor="#DoInputStorageService"
+		address="/InputStorageService" >    
+	</jaxws:endpoint>
+	
+	<bean id="DoInputStorageService"
+		class="com.tapi.tcs.vc.webservice.provider.inStorage.component.InputStorageServiceImpl">
+	<property name="vcInputStorageService" ref="vcInputStorageService"></property>
+	<property name="vcReportService" ref="vcReportService"></property> 
+	</bean>
+	
+	<!-- 发票自动分发接口(供增值税使用) -->
+	<jaxws:endpoint id="OutStorageService" implementor="#DoOutStorageService"
+		address="/OutStorageService" >    
+	</jaxws:endpoint>
+	<bean id="DoOutStorageService"
+		class="com.tapi.tcs.vc.webservice.provider.outStorage.component.OutStorageServiceImpl">
+	<property name="vcOutStorageService" ref="vcOutStorageService"></property>
+	</bean>
+	
+	<!-- 空白发票作废接口(供增值税使用) -->
+	<jaxws:endpoint id="CancelInvoiceService" implementor="#DoVcCancelInvoiceService"
+		address="/CancelInvoiceService" >    
+	</jaxws:endpoint>
+	<bean id="DoVcCancelInvoiceService"
+		class="com.tapi.tcs.vc.webservice.provider.newCancelInvoice.component.CancelInvoiceServiceImpl">
+	<property name="vcCancelInvoiceService" ref="vcCancelInvoiceService"></property>
+	</bean>
+	<!-- 新发票核销接口(供增值税使用) -->
+	<jaxws:endpoint id="VcNewInvoiceDoUsedService" implementor="#DoVcNewInvoiceDoUsedService"
+		address="/VcNewInvoiceDoUsedService" >    
+	</jaxws:endpoint>
+	<bean id="DoVcNewInvoiceDoUsedService"
+		class="com.tapi.tcs.vc.webservice.provider.newInvoiceDoUsed.component.NewInvoiceDoUsedServiceImpl">
+	<property name="newVcInvoiceDoUsedService" ref="newVcInvoiceDoUsedService"></property>
+	</bean>
+	
+	
+	<!-- 新发票作废接口(供增值税使用) -->
+	<jaxws:endpoint id="VcNewInvoiceDocDoAnnuledService" implementor="#DoVcNewInvoiceDocDoAnnuledService"
+		address="/VcNewInvoiceDocDoAnnuledService" >    
+	</jaxws:endpoint>
+	<bean id="DoVcNewInvoiceDocDoAnnuledService"
+		class="com.tapi.tcs.vc.webservice.provider.newDocDoAnnuled.component.NewInvoiceDocDoAnnuledServiceImpl">
+	<property name="doAnnuledService" ref="doAnnuledService"></property>
+	</bean>
+	
+	<!--单证新增险种(供产品工厂使用) -->
+	<jaxws:endpoint id="RiskInfoService" implementor="#DoRiskInfoService"
+		address="/RiskInfoService" >    
+	</jaxws:endpoint>
+	
+	<bean id="DoRiskInfoService"
+		class="com.tapi.tcs.vc.webservice.provider.RiskInfoService.component.RiskInfoServiceImpl">
+	    <property name="docService" ref="docService"></property>
+	</bean>
+	
+
+	
+		<!--单证新增险种(供产品工厂使用) -->
+	<jaxws:endpoint id="ClassInfoService" implementor="#DoClassInfoService"
+		address="/ClassInfoService" >    
+	</jaxws:endpoint>
+	
+	<bean id="DoClassInfoService"
+		class="com.tapi.tcs.vc.webservice.provider.ClassInfoService.component.ClassInfoServiceImpl">
+	    <property name="vcClassInfoService" ref="vcClassInfoService"></property>
+	</bean>
+</beans>
+

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="orderManager" extends="struts-default" namespace="/orderManager">
+		<action name="preOrderLaunchQuery" class="orderLaunchAction" method="preOrderLaunchQuery">
+			<result name="success">/pages/order/jsp/OrderLaunchList.jsp</result>
+		</action>
+		<action name="saveOrderLaunch" class="orderLaunchAction" method="saveOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderLaunchList.jsp</result>
+		</action>
+		<action name="viewOrderLaunch" class="orderLaunchAction" method="viewOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderLaunchView.jsp</result>
+		</action>
+		<action name="checkOrderLaunch" class="orderLaunchAction" method="checkOrderLaunch">
+		</action>
+		<action name="deleteOrderLaunch" class="orderLaunchAction" method="deleteOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderLaunchList.jsp</result>
+		</action>
+		<action name="submitOrderLaunch" class="orderLaunchAction" method="submitOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderLaunchList.jsp</result>
+		</action>
+		<action name="preOrderApproveQuery" class="orderApproveAction" method="preOrderApproveQuery">
+			<result name="success">/pages/order/jsp/OrderApproveList.jsp</result>
+		</action>
+		<action name="editOrderApprove" class="orderLaunchAction" method="viewOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderApproveEdit.jsp</result>
+		</action>
+		<action name="approvePass" class="orderApproveAction" method="approvePass">
+			<result name="success">/pages/order/jsp/OrderApproveList.jsp</result>
+		</action>
+		<action name="preOrderGatherQuery" class="orderGatherAction" method="preOrderGatherQuery">
+			<result name="success">/pages/order/jsp/OrderGatherList.jsp</result>
+		</action>
+		<!-- <action name="saveOrderGather" class="orderGatherAction" method="saveOrderGather">
+			<result name="success">/pages/order/jsp/OrderGatherList.jsp</result>
+		</action> -->
+		<action name="updateOrderGather" class="orderGatherAction" method="updateOrderGather">
+			<result name="success">/pages/order/jsp/OrderGatherList.jsp</result>
+		</action>
+		<action name="deleteOrderGather" class="orderLaunchAction" method="deleteOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderGatherList.jsp</result>
+		</action>
+		<action name="submitOrderGather" class="orderLaunchAction" method="submitOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderGatherList.jsp</result>
+		</action>
+		<action name="viewOrderGather" class="orderLaunchAction" method="viewOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderGatherView.jsp</result>
+		</action>
+		<action name="viewSubOrder" class="orderGatherAction" method="viewSubOrder">
+			<result name="success">/pages/order/jsp/OrderGatherSubView.jsp</result>
+		</action>
+		<action name="preUpdateOrderGather" class="orderLaunchAction" method="viewOrderLaunch">
+			<result name="success">/pages/order/jsp/OrderGatherEdit.jsp</result>
+		</action>
+		<action name="prePurchaseQuery" class="purchaseGenerateAction" method="prePurchaseQuery">
+			<result name="success">/pages/order/jsp/PurchaseGenerateList.jsp</result>
+		</action>
+		<action name="prePurchaseOrderQuery" class="purchaseOrderAction" method="prePurchaseOrderQuery">
+			<result name="success">/pages/order/jsp/PurchaseOrderList.jsp</result>
+		</action>
+		<action name="executePurchaseOrder" class="purchaseOrderAction" method="executePurchaseOrder">
+			<result name="success">/pages/order/jsp/PurchaseOrderList.jsp</result>
+		</action>
+		<action name="prePurchaseReceiptQuery" class="purchaseRecieptAction" method="prePurchaseReceiptQuery">
+			<result name="success">/pages/order/jsp/PurchaseReceiptList.jsp</result>
+		</action>
+		<action name="executeReceiptConfirm" class="purchaseRecieptAction" method="executeReceiptConfirm">
+			<result name="success">/pages/order/jsp/PurchaseReceiptList.jsp</result>
+		</action>
+		<action name="executeReceiptCancel" class="purchaseRecieptAction" method="executeReceiptCancel">
+			<result name="success">/pages/order/jsp/PurchaseReceiptList.jsp</result>
+		</action>
+		<action name="receivedSubmit" class="purchaseRecieptAction" method="receivedSubmit">
+			<result name="success">/pages/order/jsp/PurchaseReceiptList.jsp</result>
+		</action>
+		<action name="prePurchaseApproveQuery" class="purchaseApproveAction" method="prePurchaseApproveQuery">
+			<result name="success">/pages/order/jsp/PurchaseApproveList.jsp</result>
+		</action>
+		<action name="editPurchaseApprove" class="purchaseApproveAction" method="editPurchaseApprove">
+			<result name="success">/pages/order/jsp/PurchaseApproveEdit.jsp</result>
+		</action>
+		<action name="purchaseApprove" class="purchaseApproveAction" method="purchaseApprove">
+			<result name="success">/pages/order/jsp/PurchaseApproveList.jsp</result>
+		</action>
+	</package>
+	
+	<package name="orderJson" extends="json-default" namespace="/orderJson">
+		<action name="queryOrderLaunch" class="orderLaunchAction" method="queryOrderLaunch">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryOrderApprove" class="orderApproveAction" method="queryOrderApprove">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryOrderGather" class="orderGatherAction" method="queryOrderGather">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryOrderGatherInput" class="orderGatherAction" method="queryOrderGatherInput">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="orderGather" class="orderGatherAction" method="orderGather">
+			<result type="json">
+				<param name = "root" >orderLaunchDetVos</param >
+			</result>
+		</action>	
+		<action name="queryPurchase" class="purchaseGenerateAction" method="queryPurchase">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryPurchaseGenInput" class="purchaseGenerateAction" method="queryPurchaseGenInput">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="generatePruchase" class="purchaseGenerateAction" method="generatePruchase">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryPurchaseOrder" class="purchaseOrderAction" method="queryPurchaseOrder">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>	
+		<action name="queryPurchaseReceipt" class="purchaseRecieptAction" method="queryPurchaseReceipt">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="checkPurchase" class="purchaseRecieptAction" method="checkPurchase">
+			<result type="json">
+				<param name = "root" >message</param >
+			</result>
+		</action>
+		<action name="initOrderLaunchDet" class="orderLaunchAction" method="initOrderLaunchDet">
+			<result type="json">
+				<param name = "root" >vcOrderLaunchDet</param >
+			</result>
+		</action>
+		<action name="findValidStorageNum" class="orderLaunchAction" method="findValidStorageNum">
+			<result type="json">
+				<param name = "root" >jsonData</param >
+			</result>
+		</action>
+		<action name="queryPurchaseApprove" class="purchaseApproveAction" method="queryPurchaseApprove">
+			<result type="json">
+				<param name = "ignoreHierarchy" >false</param >
+			</result>
+		</action>
+		<action name="saveOrderGather" class="orderGatherAction" method="saveOrderGather">
+			<result type="json">
+				<param name = "root" >jsonData</param >
+			</result>
+		</action>
+		<action name="exportPurchaseOrder" class="purchaseOrderAction" method="exportPurchaseOrder">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+	</package>
+
+</struts>
+

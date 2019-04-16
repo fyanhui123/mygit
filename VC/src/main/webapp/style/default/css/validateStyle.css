@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/* ----------------------------------------------------------------- Form */
+/* TextInput */
+.textInput, input.focus, input.required, input.error, input.readonly, input.disabled,
+textarea.focus, textarea.required, textarea.error, textarea.readonly, textarea.disabled {border:1px solid #aaa; background:#fff url('../images/input_bg.png') no-repeat top right; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding:2px;}
+
+input.error, textarea.error { border:1px solid #f00; }
+input.focus, textarea.focus { border-color:#64aabc #a9d7e3 #a9d7e3 #64aabc;}
+input.readonly, textarea.readonly { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3;}
+input.disabled, textarea.disabled { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3;}
+span.info{color:#FF0000;display:block;line-height:21px;float:left;}
+

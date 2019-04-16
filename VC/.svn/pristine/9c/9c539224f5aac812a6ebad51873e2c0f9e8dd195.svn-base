@@ -1,0 +1,15 @@
+package com.tapi.tcs.vc.oauth.service;
+
+import com.tapi.tcs.vc.oauth.vo.OAuthCompany;
+import com.tapi.tcs.vc.oauth.vo.OAuthResponse;
+import com.tapi.tcs.vc.oauth.vo.OAuthRole;
+import com.tapi.tcs.vc.oauth.vo.OAuthUserRole;
+
+public interface OAuthService {
+
+	public OAuthResponse saveRole(OAuthRole role) throws Exception;
+
+	public OAuthResponse saveUserRole(OAuthUserRole userRole) throws Exception;
+	public OAuthResponse saveCompany(OAuthCompany company) throws Exception;
+
+}

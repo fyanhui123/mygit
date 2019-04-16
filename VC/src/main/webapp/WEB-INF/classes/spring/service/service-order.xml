@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-autowire="byName" default-lazy-init="true">
+
+	<!-- 订单管理Service -->
+	<bean id="orderManagerService"
+		class="com.tapi.tcs.vc.order.service.impl.OrderManagerServiceImpl" >
+		<property name="orderManagerDao" ref="orderManagerDao"></property>
+		<property name="vcDocMngRuleDao" ref="vcDocMngRuleDao"></property>		
+	</bean>
+		
+</beans>
+

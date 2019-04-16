@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="common" extends="struts-default" namespace="/common">
+		<action name="download" class="downloadAction"
+			method="download">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename=${fileName}</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		<action name="downloadById" class="downloadAction"
+			method="downloadById">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename=${fileName}</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		<!-- 机构树Ztree  -->
+		<action name="initQueryOrgZTree" class="vcLevelAction" method="initQueryOrgTree">
+			<result name="success">/pages/common/jsp/companyZTree.jsp</result>
+		</action>
+		
+	</package>
+	<package name="commonJson" extends="json-default" namespace="/commonJson">
+	    <!-- zTree机构树Json  -->
+	   <action name="initQueryOrgZTree" class="vcLevelAction" method="initQueryOrgZTree">
+			<result type="json">
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

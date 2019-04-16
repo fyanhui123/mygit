@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+  
+  	<http-conf:conduit  name="http://218.66.6.174/.*">     
+        <http-conf:client ConnectionTimeout="150000" ReceiveTimeout="150000"/>    
+    </http-conf:conduit> 
+  
+	<jaxws:client id="visaWebService"
+	   serviceClass="com.tapi.service.fin.visa.intf.VisaWebService"
+	   address="${visaWebServiceAddress}" />
+	
+	<jaxws:client id="jtServicePortType"
+		serviceClass="cn.com.pansky.JTServicePortType"
+		address="${jtServicePortTypeAddress}"/>
+	
+	<jaxws:client id="teamDetailService"
+	   serviceClass="com.tapi.service.security.teamdetails.TeamDetailService"
+	   address="${salesWebServiceAddress}/TeamDetailService" />
+	
+	<jaxws:client id="userDetailService"
+	   serviceClass="com.tapi.service.security.userdetails.UserDetailService"
+	   address="${salesWebServiceAddress}/UserDetailService" />
+	   
+	<jaxws:client id="userDtoService"
+	   serviceClass="com.tapi.service.security.userdetails1.UserDtoService"
+	   address="${salesWebServiceAddress}/UserDtoService" />
+	
+	<jaxws:client id="agreementDetailService"
+	   serviceClass="com.tapi.service.security.agreementdetails.AgreementDetailService"
+	   address="${salesWebServiceAddress}/AgreementDetailService" />
+	   
+  	<jaxws:client id="agreementDtoService"
+	   serviceClass="com.tapi.service.security.agreementdetails1.AgreementDtoService"
+	   address="${salesWebServiceAddress}/AgreementDtoService" />
+	   
+  	<jaxws:client id="vcInvoiceTaxUploadService"
+	   serviceClass="com.tapi.tcs.vc.invoice.taxupload.common.intf.VCInvoiceTaxUploadService"
+	   address="${invoiceTaxUploadAddress}" />
+	   
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="index" extends="struts-default" namespace="/index">
+        <action name="index" class="indexAction" method="viewIndex">
+            <result name="main">/pages/common/jsp/main.jsp</result>
+            <result name="topPage">/pages/common/jsp/header.jsp</result>
+            <result name="topSwitch">/pages/menu/jsp/topswitch.jsp</result>
+            <result name="leftPage">/pages/common/jsp/leftaccordion.jsp</result>
+            <result name="leftSwitch">/pages/menu/jsp/leftswitch.jsp</result>
+            <result name="mainCenter">/pages/menu/jsp/mainCenter.jsp</result>
+        </action>
+    
+    </package>
+    
+    <package name="F5Check" extends="struts-default">
+       <action name="F5Check" class="indexAction" method="f5Check">
+           <result type="stream">
+              <param name="inputName">inputStream</param>
+           </result>
+       </action>
+    </package>
+    
+    <package name="indexJson" extends="json-default" namespace="/index">
+    
+        <action name="menu" class="indexAction" method="queryMenuList"/>
+        <action name="queryCodeLable" class="widgetsAction" method="queryCodeLable">
+            <result type="json">
+                <param name="root">codeLabelList</param>
+            </result>
+        </action>
+    </package>
+    <package name="loginAction" extends="struts-default" namespace="/index">
+        <action name="login" class="loginAction" method="login"/>
+        <action name="logout" class="loginAction" method="logout"/>
+        <action name="querySystemList" class="loginAction" method="querySystemList"/>
+    </package>
+</struts>
+
